@@ -57,3 +57,5 @@ const observer = new IntersectionObserver(
 reveals.forEach((section) => {
   observer.observe(section);
 });
+
+document.getElementById('year').textContent = new Date().getFullYear();

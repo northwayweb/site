@@ -190,19 +190,22 @@ p {
 .industry-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 1.5rem;
-  margin-top: 1.5rem;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 2rem;
   padding: 0;
   list-style: none;
 }
 
 .industry-list li {
-  background: rgba(59,179,189,0.12);
+  background: rgba(59,179,189,0.14);
   color: var(--primary);
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1.2rem;
   border-radius: 999px;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
+
 
 /* ===============================
    SERVICES / CARDS
@@ -264,8 +267,11 @@ p {
 }
 
 .steps li {
-  margin-bottom: 0.8rem;
-  font-weight: 500;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.8rem;
+  align-items: start;
+  white-space: normal;
 }
 
 /* ===============================
@@ -605,23 +611,21 @@ section:nth-of-type(even) {
    =============================== */
 
 .pricing-item.popular {
-  position: relative;
+  padding-top: 3.2rem;
 }
 
 .pricing-badge {
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
+  top: 1rem;
+  right: 1rem;
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-  color: #fff;
+  color: white;
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 0.45rem 0.9rem;
+  padding: 0.35rem 0.9rem;
   border-radius: 999px;
-  box-shadow: 0 8px 25px rgba(59,179,189,0.35);
+  font-weight: 700;
 }
+
 
 
 @media (max-width: 600px) {
@@ -762,3 +766,54 @@ section:nth-of-type(even) {
     padding: 2rem 1.8rem;
   }
 }
+
+
+/* HERO MOBILE TWEAKS */
+@media (max-width: 600px) {
+  .hero .supporting {
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+}
+
+/* HERO TRUST SIGNAL */
+.hero-trust {
+  margin-top: 1.6rem;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.9);
+}
+
+.hero-trust span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .hero-trust {
+    margin-top: 2rem;
+  }
+}
+
+.testimonial-card blockquote {
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.testimonial-author {
+  font-size: 0.9rem;
+}
+
+
+.trust-panel h3 {
+  white-space: nowrap;
+  font-size: 1.1rem;
+}
+
+
+
