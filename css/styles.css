@@ -811,11 +811,7 @@ textarea {
 
   .contact form .netlify-recaptcha {
     justify-content: center;
-  }
-
-  .contact form .netlify-recaptcha > * {
-    margin-left: auto;
-    margin-right: auto;
+    align-items: center;
   }
 
   .contact small {
