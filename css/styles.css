@@ -710,30 +710,36 @@ section:nth-of-type(even) {
 }
 
 
-@media (max-width: 600px) {
-  .industry-list {
-    justify-content: center;
-    gap: 0.7rem;
-  }
+.industry-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.9rem;
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+  justify-items: center;
 }
 
-  .industry-list li {
+/* Pills */
+.industry-list li {
+  width: 100%;
+  max-width: 220px;
+  text-align: center;
   background: rgba(59,179,189,0.14);
   color: var(--primary);
-  padding: 0.6rem 1.4rem;
+  padding: 0.65rem 1.1rem;
   border-radius: 999px;
   font-weight: 600;
   font-size: 0.95rem;
-  min-width: 150px;
-  text-align: center;
 }
 
 
-@media (min-width: 768px) {
-  .industry-list li {
-    min-width: 170px;
+@media (max-width: 480px) {
+  .industry-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+
 
 
 .service-icon {
@@ -954,23 +960,53 @@ section + section::before {
    FOOTER COPYRIGHT
    =============================== */
 
-.footer-location {
-  white-space: nowrap;
-  font-size: 0.9rem;
-}
-
-
-/* ===============================
-   FOOTER MOBILE ALIGNMENT
-   =============================== */
-
-.footer-location {
+footer.footer {
+  background: var(--primary);
+  color: var(--white);
   text-align: center;
+  padding: 3rem 1.5rem 2.5rem;
+}
+
+.footer-location {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  opacity: 0.85;
   white-space: nowrap;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 600px) {
   .footer-location {
-    text-align: left;
+    text-align: center;
+    display: block;
   }
+}
+
+
+/* Section card wrapper (used only where needed) */
+.section-card {
+  background: linear-gradient(
+    180deg,
+    rgba(59,179,189,0.06),
+    rgba(59,179,189,0.02)
+  );
+  border-radius: 22px;
+  padding: 3rem;
+}
+
+/* Headings always flush with container */
+section h2 {
+  margin-left: 0;
+  text-align: left;
+}
+
+/* Mobile: headings centered like others */
+@media (max-width: 768px) {
+  section h2 {
+    text-align: center;
+  }
+}
+
+
+section + section {
+  border-top: 1px solid rgba(15,47,68,0.05);
 }
