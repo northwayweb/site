@@ -24,3 +24,27 @@ if (form) {
     form.reset();
   });
 }
+
+// Scroll-based reveal animations
+const revealElements = document.querySelectorAll(
+  '.service-card, .demo-card, .pricing-item, section h2, section p, .industry-list, .steps'
+);
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.15
+  }
+);
+
+revealElements.forEach(el => {
+  el.classList.add('reveal');
+  observer.observe(el);
+});
