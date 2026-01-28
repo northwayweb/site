@@ -422,3 +422,131 @@ footer.footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ===============================
+   SECTION SPACING REFINEMENT
+   =============================== */
+
+section {
+  padding: 4.5rem 0;
+}
+
+section.who-we-help,
+section.how-it-works {
+  padding: 3.5rem 0;
+}
+
+section.demo-websites,
+section.pricing {
+  padding: 5rem 0;
+}
+
+.who-we-help .container {
+  background: linear-gradient(
+    180deg,
+    rgba(59,179,189,0.05),
+    rgba(59,179,189,0.02)
+  );
+  border-radius: 22px;
+  padding: 3rem 3rem;
+}
+
+.who-we-help p {
+  max-width: 680px;
+  font-size: 1.05rem;
+}
+
+.steps {
+  list-style: none;
+  padding: 0;
+  margin-top: 2.5rem;
+  max-width: 720px;
+}
+
+.steps li {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  font-weight: 500;
+}
+
+.steps li::before {
+  content: "✓";
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-top: 0.1rem;
+}
+
+.pricing-table {
+  align-items: stretch;
+}
+
+.pricing-item {
+  border: 1px solid rgba(15,47,68,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(59,179,189,0.06),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* Highlight main offer */
+.pricing-item:first-child {
+  border: 2px solid var(--accent);
+  box-shadow: 0 30px 80px rgba(59,179,189,0.18);
+  transform: translateY(-6px);
+}
+
+.pricing-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+
+.price {
+  font-size: 2.2rem;
+  margin-top: 0.8rem;
+}
+
+
+section + section {
+  border-top: 1px solid rgba(15,47,68,0.04);
+}
+
+
+.section-lead {
+  max-width: 680px;
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 2.2rem;
+}
+
+
+.pricing-note {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.8rem;
+}
+
+
+section:nth-of-type(even) {
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f9fbfd
+  );
+}

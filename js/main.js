@@ -1,38 +1,48 @@
-// Minimal JS for contact form validation and feedback
+// ===============================
+// Contact Form (client-side feedback only)
+// ===============================
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
+
 if (form) {
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
     status.textContent = '';
+    status.style.color = '';
+
     const name = form.name.value.trim();
     const business = form.business.value.trim();
     const email = form.email.value.trim();
     const message = form.message.value.trim();
+
     if (!name || !business || !email || !message) {
       status.textContent = 'Please fill in all fields.';
       status.style.color = '#c00';
       return;
     }
+
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       status.textContent = 'Please enter a valid email address.';
       status.style.color = '#c00';
       return;
     }
-    status.textContent = 'Thank you! Your message has been received.';
+
+    status.textContent =
+      'Thank you! Your message has been received. We will get back to you shortly.';
     status.style.color = '#18405a';
+
     form.reset();
   });
 }
 
-// Scroll-based reveal animations
-const revealElements = document.querySelectorAll(
-  '.service-card, .demo-card, .pricing-item, section h2, section p, .industry-list, .steps'
-);
+// ===============================
+// Scroll Reveal Animations
+// ===============================
+const reveals = document.querySelectorAll('.reveal');
 
 const observer = new IntersectionObserver(
   (entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         observer.unobserve(entry.target);
@@ -40,11 +50,10 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.15
+    threshold: 0.15,
   }
 );
 
-revealElements.forEach(el => {
-  el.classList.add('reveal');
-  observer.observe(el);
+reveals.forEach((section) => {
+  observer.observe(section);
 });
