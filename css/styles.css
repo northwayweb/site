@@ -622,3 +622,143 @@ section:nth-of-type(even) {
   border-radius: 999px;
   box-shadow: 0 8px 25px rgba(59,179,189,0.35);
 }
+
+
+@media (max-width: 600px) {
+  .cta-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .section-intro,
+  .section-intro.wide {
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .industry-list {
+    justify-content: center;
+    gap: 0.7rem;
+  }
+
+  .industry-list li {
+    font-size: 0.95rem;
+    padding: 0.55rem 1.1rem;
+  }
+}
+
+
+.service-icon {
+  font-size: 3.2rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media (max-width: 600px) {
+  .service-icon {
+    font-size: 3.5rem;
+  }
+}
+
+
+@media (max-width: 600px) {
+  h2 {
+    text-align: center;
+  }
+
+  .service-card,
+  .pricing-item,
+  .demo-card {
+    text-align: center;
+  }
+
+  .pricing-features {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 260px;
+  }
+}
+
+
+/* ===============================
+   TESTIMONIAL
+   =============================== */
+
+.testimonial {
+  background: linear-gradient(
+    180deg,
+    rgba(59,179,189,0.06),
+    rgba(59,179,189,0.02)
+  );
+  padding: 4.5rem 0;
+}
+
+.testimonial h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.testimonial-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: 2.5rem 3rem;
+  border-radius: 18px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: "“";
+  font-size: 4rem;
+  color: var(--accent);
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1;
+}
+
+.testimonial-card blockquote {
+  font-size: 1.15rem;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.7;
+}
+
+.testimonial-author {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 2rem 1.8rem;
+  }
+}
