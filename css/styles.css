@@ -848,7 +848,7 @@ textarea {
 }
 
 .steps li {
-  background: white;
+  background: linear-gradient(180deg, #ffffff, rgba(59,179,189,0.03));
   border: 1px solid rgba(15,47,68,0.06);
   box-shadow: var(--shadow-sm);
   border-radius: 16px;
@@ -857,18 +857,47 @@ textarea {
   display: flex;
   gap: 0.8rem;
   align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.steps li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(700px 220px at 50% 0%, rgba(59,179,189,0.12), transparent 60%);
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 0;
+}
+
+.steps li:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(59,179,189,0.22);
 }
 
 @media (max-width: 600px) {
   .steps li {
     padding: 0.95rem 1rem;
-    font-size: 0.98rem;
-    line-height: 1.45;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    min-height: 82px;
   }
 
   .steps li strong {
     display: inline-block;
     white-space: nowrap;
+  }
+
+  .steps li .step-text {
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
@@ -898,10 +927,21 @@ textarea {
   line-height: 1.2;
   margin-top: 0.05rem;
   flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .steps li strong {
   color: var(--primary);
+  position: relative;
+  z-index: 1;
+  margin-right: 0.35rem;
+}
+
+.steps li .step-text {
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.01em;
 }
 
 .demo-placeholder {
