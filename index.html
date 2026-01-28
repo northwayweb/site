@@ -600,7 +600,23 @@
             Ready to get started? Reach out for a friendly chat or a free website demo.
           </p>
 
-          <form id="contact-form" novalidate>
+          <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-recaptcha="true"
+              netlify-honeypot="bot-field"
+              id="contact-form"
+            >
+
+            <input type="hidden" name="form-name" value="contact" />
+
+              <p style="display:none;">
+                <label>
+                  Don’t fill this out if you're human:
+                  <input name="bot-field" />
+                </label>
+              </p>
 
             <div class="form-group">
               <label for="name">Name</label>
@@ -623,6 +639,8 @@
             </div>
 
             <div class="char-count" id="message-count" aria-live="polite">0/500</div>
+            
+            <div data-netlify-recaptcha="true"></div>
 
             <button type="submit" class="cta-primary">Send Message</button>
 

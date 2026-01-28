@@ -7,6 +7,12 @@ const messageField = document.getElementById('message');
 const messageCount = document.getElementById('message-count');
 const MAX_MESSAGE_CHARS = 500;
 
+function getFormValue(formEl, fieldName) {
+  const field = formEl && formEl.elements ? formEl.elements.namedItem(fieldName) : null;
+  if (!field) return '';
+  return String(field.value || '').trim();
+}
+
 function updateMessageCount() {
   if (!messageField || !messageCount) return;
   const current = messageField.value.length;
@@ -20,33 +26,44 @@ if (messageField && messageCount) {
 
 if (form) {
   form.addEventListener('submit', function (e) {
-    e.preventDefault();
     status.textContent = '';
     status.style.color = '';
 
-    const name = form.name.value.trim();
-    const business = form.business.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
+    const name = getFormValue(form, 'name');
+    const business = getFormValue(form, 'business');
+    const email = getFormValue(form, 'email');
+    const message = getFormValue(form, 'message');
 
     if (!name || !business || !email || !message) {
+      e.preventDefault();
       status.textContent = 'Please fill in all fields.';
       status.style.color = '#c00';
       return;
     }
 
     if (!/^\S+@\S+\.\S+$/.test(email)) {
+      e.preventDefault();
       status.textContent = 'Please enter a valid email address.';
       status.style.color = '#c00';
       return;
     }
 
     if (message.length > MAX_MESSAGE_CHARS) {
+      e.preventDefault();
       status.textContent = `Message must be ${MAX_MESSAGE_CHARS} characters or less.`;
       status.style.color = '#c00';
       return;
     }
 
+    const isNetlifyForm = form.hasAttribute('data-netlify');
+
+    if (isNetlifyForm) {
+      status.textContent = 'Submitting…';
+      status.style.color = '#18405a';
+      return;
+    }
+
+    e.preventDefault();
     status.textContent =
       'Thank you! Your message has been received. We will get back to you shortly.';
     status.style.color = '#18405a';
