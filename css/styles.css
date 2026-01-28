@@ -1,13 +1,11 @@
 /* ===============================
-   Northway Web — Premium Agency CSS
+   Northway Web — Premium Agency CSS (FINAL)
    =============================== */
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* ===============================
-   ROOT VARIABLES
-   =============================== */
+/* Root Variables */
 :root {
   --primary: #0f2f44;
   --primary-dark: #0a2232;
@@ -16,58 +14,32 @@
   --bg: #f6f9fc;
   --white: #ffffff;
   --text: #1f2933;
-  --muted: #5b6b7a; /* improved contrast */
+  --muted: #6b7c8f;
   --radius: 14px;
   --shadow-sm: 0 6px 20px rgba(0,0,0,0.06);
   --shadow-md: 0 12px 40px rgba(0,0,0,0.08);
   --shadow-lg: 0 25px 70px rgba(0,0,0,0.12);
 }
 
-/* ===============================
-   RESET + BASE
-   =============================== */
-* { box-sizing: border-box; }
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
 }
 
-/* ===============================
-   ACCESSIBILITY – FOCUS STATES
-   =============================== */
-:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 6px;
-}
-
-a:focus-visible,
-button:focus-visible {
-  box-shadow: 0 0 0 4px rgba(59,179,189,0.35);
-}
-
-/* ===============================
-   ACCESSIBILITY – REDUCED MOTION
-   =============================== */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
-  }
-}
-
-/* ===============================
-   GLOBAL CONTAINER
-   =============================== */
+/* Container */
 .container {
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -76,41 +48,133 @@ button:focus-visible {
 /* ===============================
    HERO
    =============================== */
-header.hero {
+.hero {
   background:
     radial-gradient(1000px 500px at 50% -20%, rgba(59,179,189,0.35), transparent),
     linear-gradient(180deg, var(--primary), var(--primary-dark));
-  color: var(--white);
-  padding: 7rem 0 6rem;
+  color: white;
   text-align: center;
+  padding: 7rem 0 6rem;
   position: relative;
 }
 
-/* (hero styles unchanged for safety) */
+.top-nav {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-btn {
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  font-weight: 600;
+  border: 2px solid rgba(255,255,255,0.25);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.nav-btn:hover,
+.nav-btn:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent-dark);
+  outline: none;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+}
+
+.hero .supporting {
+  font-size: 1.25rem;
+  color: rgba(255,255,255,0.85);
+  max-width: 760px;
+  margin: 0 auto 3rem;
+}
+
+/* CTA */
+.cta-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.cta-primary,
+.cta-secondary {
+  padding: 1rem 2.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: white;
+  box-shadow: 0 15px 40px rgba(59,179,189,0.45);
+}
+
+.cta-primary:hover {
+  transform: translateY(-3px);
+}
+
+.cta-secondary {
+  border: 2px solid rgba(255,255,255,0.35);
+  color: white;
+}
+
+/* Hero trust */
+.hero-trust {
+  margin-top: 1.6rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
 
 /* ===============================
    SECTIONS
    =============================== */
-section { padding: 4.5rem 0; }
+section {
+  padding: 5rem 0;
+  position: relative;
+}
 
-section:nth-of-type(even) {
-  background: linear-gradient(180deg, #ffffff, #f9fbfd);
+section + section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 1px;
+  background: rgba(15,47,68,0.08);
 }
 
 h2 {
   font-size: 2.2rem;
   margin-bottom: 1.2rem;
-  letter-spacing: -0.02em;
   color: var(--primary);
 }
 
-p {
-  max-width: 760px;
+.section-intro {
+  max-width: 900px;
   color: var(--muted);
+  margin-bottom: 2.5rem;
 }
 
 /* ===============================
-   WHO WE HELP – PREMIUM GRID
+   WHO WE HELP — FINAL
    =============================== */
 .who-we-help {
   background: linear-gradient(
@@ -130,29 +194,23 @@ p {
   padding: 3rem;
 }
 
-.who-header {
-  max-width: 720px;
-  margin-bottom: 3rem;
-}
-
-.who-header h2,
-.who-header p {
+.who-we-help h2 {
   text-align: left;
 }
 
 .who-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .who-card {
-  background: var(--white);
+  background: white;
   border-radius: 18px;
   padding: 2rem 1.5rem;
   text-align: center;
   font-weight: 600;
-  font-size: 1rem;
   color: var(--primary);
   box-shadow: var(--shadow-sm);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -163,57 +221,51 @@ p {
   box-shadow: var(--shadow-md);
 }
 
-@media (max-width: 768px) {
-  .who-header h2,
-  .who-header p {
+/* Responsive Who We Help */
+@media (max-width: 900px) {
+  .who-grid { grid-template-columns: repeat(2, 1fr); }
+  .who-we-help h2,
+  .who-we-help .section-intro {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
   }
-
-  .who-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
-@media (max-width: 420px) {
-  .who-grid {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 500px) {
+  .who-grid { grid-template-columns: 1fr; }
 }
 
 /* ===============================
-   SERVICES / DEMOS / PRICING CARDS
+   CARDS (Services, Pricing, Demos)
    =============================== */
 .services,
-.demos,
-.pricing-table {
+.pricing-table,
+.demos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
 }
 
 .service-card,
-.demo-card,
-.pricing-item {
-  background: var(--white);
+.pricing-item,
+.demo-card {
+  background: white;
   border-radius: var(--radius);
   padding: 2.2rem;
   box-shadow: var(--shadow-sm);
   transition: all 0.35s ease;
-  position: relative;
 }
 
 .service-card:hover,
-.demo-card:hover,
-.pricing-item:hover {
+.pricing-item:hover,
+.demo-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
 }
 
 /* ===============================
-   PRICING FEATURES (CHECKMARKS)
+   PRICING CHECKMARKS
    =============================== */
 .pricing-features {
   list-style: none;
@@ -222,20 +274,51 @@ p {
 }
 
 .pricing-features li {
-  position: relative;
   padding-left: 1.6rem;
-  margin-bottom: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--primary);
+  position: relative;
+  margin-bottom: 0.7rem;
 }
 
 .pricing-features li::before {
   content: "✓";
   position: absolute;
   left: 0;
-  top: 0;
   color: var(--accent);
   font-weight: 700;
+}
+
+/* ===============================
+   FORMS (ACCESSIBILITY)
+   =============================== */
+input,
+textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #cdd6e1;
+  font-size: 1rem;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(59,179,189,0.45);
+  outline-offset: 2px;
+}
+
+/* ===============================
+   REVEAL ANIMATION
+   =============================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===============================
@@ -243,7 +326,7 @@ p {
    =============================== */
 footer.footer {
   background: var(--primary);
-  color: var(--white);
+  color: white;
   text-align: center;
   padding: 3.5rem 1.5rem 3rem;
 }
@@ -255,7 +338,7 @@ footer.footer {
 
 .footer-tagline {
   margin: 0.6rem 0;
-  color: rgba(255,255,255,0.7);
+  opacity: 0.7;
 }
 
 .footer-contact,
@@ -264,7 +347,7 @@ footer.footer {
   opacity: 0.9;
 }
 
-/* Force center alignment on mobile & tablet */
+/* Force center alignment on tablet + mobile */
 @media (max-width: 900px) {
   footer.footer * {
     text-align: center;
@@ -272,21 +355,12 @@ footer.footer {
 }
 
 /* ===============================
-   SCROLL REVEAL + STAGGER
+   MOBILE TWEAKS
    =============================== */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+@media (max-width: 600px) {
+  h2 { text-align: center; }
+  .cta-group {
+    flex-direction: column;
+    align-items: center;
+  }
 }
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal[data-delay="1"] { transition-delay: 0.05s; }
-.reveal[data-delay="2"] { transition-delay: 0.1s; }
-.reveal[data-delay="3"] { transition-delay: 0.15s; }
-.reveal[data-delay="4"] { transition-delay: 0.2s; }
-.reveal[data-delay="5"] { transition-delay: 0.25s; }
