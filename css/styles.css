@@ -747,11 +747,14 @@ textarea {
   overflow: hidden;
   display: flex;
   justify-content: center;
-  margin: 0.75rem 0 1.1rem;
+  width: 100%;
+  margin: 0.35rem 0 1.25rem;
 }
 
 .contact form div[data-netlify-recaptcha="true"] iframe {
   max-width: 100%;
+  transform: scale(0.92);
+  transform-origin: 50% 0;
 }
 
 .contact form {
@@ -815,9 +818,8 @@ textarea {
 }
 
 @media (max-width: 420px) {
-  .contact form div[data-netlify-recaptcha="true"] {
-    transform: scale(0.92);
-    transform-origin: 50% 0;
+  .contact form div[data-netlify-recaptcha="true"] iframe {
+    transform: scale(0.86);
   }
 }
 
