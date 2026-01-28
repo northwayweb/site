@@ -742,23 +742,23 @@ textarea {
   background: rgba(255,255,255,0.9);
 }
 
-.contact form div[data-netlify-recaptcha="true"] {
+.contact form .netlify-recaptcha {
   max-width: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 0.2rem 0 1.35rem;
+  margin: 0.15rem 0 1.65rem;
 }
 
-.contact form div[data-netlify-recaptcha="true"] > * {
+.contact form .netlify-recaptcha > * {
   max-width: 100%;
   display: block;
-  transform: scale(0.84);
+  transform: scale(0.88);
   transform-origin: 50% 0;
 }
 
-.contact form div[data-netlify-recaptcha="true"] iframe {
+.contact form .netlify-recaptcha iframe {
   max-width: 100%;
   display: block;
 }
@@ -824,8 +824,8 @@ textarea {
 }
 
 @media (max-width: 420px) {
-  .contact form div[data-netlify-recaptcha="true"] > * {
-    transform: scale(0.78);
+  .contact form .netlify-recaptcha > * {
+    transform: scale(0.80);
   }
 }
 
