@@ -828,10 +828,12 @@ textarea {
   .contact form .netlify-recaptcha {
     justify-content: center;
     align-items: center;
+    overflow: visible;
   }
 
   .contact form .netlify-recaptcha > * {
-    transform: none;
+    transform: scale(0.86);
+    transform-origin: 50% 0;
   }
 
   .contact small {
@@ -854,7 +856,8 @@ textarea {
 
 @media (max-width: 420px) {
   .contact form .netlify-recaptcha > * {
-    transform: none;
+    transform: scale(0.82);
+    transform-origin: 50% 0;
   }
 }
 
