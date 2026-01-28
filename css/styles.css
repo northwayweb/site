@@ -260,13 +260,19 @@ section:not(.contact) > .container > .section-intro {
   }
 
   .hero {
-    padding: 5.5rem 0 4.5rem;
+    padding: 5rem 0 4.1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.05rem;
+    line-height: 1.08;
+    margin-bottom: 1.05rem;
   }
 
   .hero .supporting {
-    font-size: 1.05rem;
-    line-height: 1.55;
-    margin-bottom: 2.2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.7rem;
   }
 
   .section-intro,
@@ -391,9 +397,50 @@ section:not(.contact) > .container > .section-intro {
 
 @media (max-width: 500px) {
   .who-grid { grid-template-columns: 1fr; }
+  .who-grid .who-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    justify-self: stretch;
+  }
   .who-card {
     padding: 1.4rem 1.1rem;
     border-radius: 16px;
+  }
+}
+
+.about-page main {
+  padding: 1.25rem 0 4.5rem;
+}
+
+.about-page main section {
+  padding: 2.25rem 0;
+}
+
+.about-page main section + section::before {
+  display: none;
+}
+
+.about-page main section .container {
+  max-width: 980px;
+  background: white;
+  border: 1px solid rgba(15,47,68,0.06);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sm);
+  padding: 2.25rem 2.25rem;
+}
+
+@media (max-width: 600px) {
+  .about-page main {
+    padding: 0.75rem 0 4rem;
+  }
+
+  .about-page main section {
+    padding: 1.5rem 0;
+  }
+
+  .about-page main section .container {
+    padding: 1.6rem 1.3rem;
+    border-radius: 18px;
   }
 }
 
@@ -673,6 +720,14 @@ textarea {
   line-height: 1.5;
 }
 
+@media (max-width: 600px) {
+  .contact .trust-panel p strong {
+    font-size: 0.95rem;
+    line-height: 1.35;
+    display: inline-block;
+  }
+}
+
 .trust-panel h3 {
   margin-top: 0;
 }
@@ -797,6 +852,18 @@ textarea {
   align-items: flex-start;
 }
 
+@media (max-width: 600px) {
+  .steps li {
+    padding: 0.95rem 1rem;
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  .steps li strong {
+    display: inline;
+  }
+}
+
 .how-it-works .trust-panel ul {
   list-style: none;
   padding-left: 0;
@@ -885,6 +952,16 @@ footer.footer {
 .footer-location {
   font-size: 0.95rem;
   opacity: 0.9;
+}
+
+.footer-location {
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .footer-location {
+    font-size: 0.86rem;
+  }
 }
 
 /* Force center alignment on tablet + mobile */
