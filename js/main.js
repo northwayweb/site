@@ -156,4 +156,19 @@ if (testimonialSlider && testimonialTrack) {
   start();
 }
 
+const faqAccordion = document.getElementById('faq-accordion');
+
+if (faqAccordion) {
+  const items = faqAccordion.querySelectorAll('details');
+
+  items.forEach((item) => {
+    item.addEventListener('toggle', () => {
+      if (!item.open) return;
+      items.forEach((other) => {
+        if (other !== item) other.open = false;
+      });
+    });
+  });
+}
+
 document.getElementById('year').textContent = new Date().getFullYear();
