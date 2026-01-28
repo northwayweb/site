@@ -1,0 +1,234 @@
+/* Northway Web Styles */
+:root {
+  --primary: #18405a;
+  --accent: #3bb3bd;
+  --bg: #f7fafc;
+  --text: #20262e;
+  --muted: #7a8a99;
+  --white: #fff;
+  --radius: 8px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+header.hero {
+  background: var(--primary);
+  color: var(--white);
+  padding: 4rem 0 3rem 0;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.hero .supporting {
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+.cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta-primary, .cta-secondary {
+  padding: 0.85em 2em;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: inline-block;
+}
+.cta-primary {
+  background: var(--accent);
+  color: var(--white);
+}
+.cta-primary:hover, .cta-primary:focus {
+  background: #2896a2;
+}
+.cta-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--accent);
+}
+.cta-secondary:hover, .cta-secondary:focus {
+  background: var(--accent);
+  color: var(--white);
+}
+section {
+  margin: 2.5rem 0;
+}
+h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+.industry-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.5rem;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  list-style: disc inside;
+}
+.services {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.service-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(24,64,90,0.06);
+  flex: 1 1 220px;
+  padding: 1.5rem;
+  min-width: 210px;
+  margin-bottom: 1rem;
+}
+.service-card h3 {
+  margin-top: 0;
+  color: var(--accent);
+}
+.steps {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+.demos {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.demo-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(24,64,90,0.06);
+  flex: 1 1 260px;
+  min-width: 220px;
+  padding: 1.2rem;
+  position: relative;
+  margin-bottom: 1rem;
+}
+.demo-placeholder {
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 1.1rem;
+  padding: 2.5rem 0;
+  text-align: center;
+  border-radius: var(--radius);
+  border: 1px dashed var(--muted);
+}
+.demo-label {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--accent);
+  color: var(--white);
+  font-size: 0.85rem;
+  padding: 0.2em 0.7em;
+  border-radius: 999px;
+}
+.pricing-table {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.pricing-item {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(24,64,90,0.06);
+  flex: 1 1 220px;
+  min-width: 210px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.pricing-item h3 { color: var(--accent); }
+.price {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-top: 0.5rem;
+}
+form {
+  max-width: 420px;
+  margin: 0 auto;
+}
+.form-group {
+  margin-bottom: 1.1rem;
+}
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+input, textarea {
+  width: 100%;
+  padding: 0.7em;
+  border-radius: var(--radius);
+  border: 1px solid #c6d2df;
+  font-size: 1rem;
+  background: var(--white);
+  color: var(--text);
+  transition: border 0.2s;
+}
+input:focus, textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+button[type="submit"] {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+#form-status {
+  margin-top: 0.7rem;
+  min-height: 1.3em;
+  color: var(--primary);
+  font-size: 1rem;
+}
+footer.footer {
+  background: var(--primary);
+  color: var(--white);
+  text-align: center;
+  padding: 2rem 0 1rem 0;
+  margin-top: 2.5rem;
+}
+.footer-brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.footer-tagline {
+  color: var(--accent);
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.footer-contact, .footer-location {
+  font-size: 0.97rem;
+  color: var(--white);
+}
+@media (max-width: 800px) {
+  .container { padding: 1rem; }
+  .services, .demos, .pricing-table { flex-direction: column; gap: 0.7rem; }
+}
+@media (max-width: 520px) {
+  .hero h1 { font-size: 1.3rem; }
+  h2 { font-size: 1.1rem; }
+  .container { padding: 0.6rem; }
+}
