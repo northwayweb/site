@@ -61,10 +61,39 @@ body {
 .top-nav {
   position: absolute;
   top: 2rem;
+  left: 2rem;
   right: 2rem;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 1rem;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: 1rem;
+}
+
+.brand-logo {
+  color: white;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  padding: 0.35rem 0.55rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  line-height: 1.1;
+}
+
+.brand-logo:hover,
+.brand-logo:focus-visible {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.28);
+  outline: none;
 }
 
 .nav-btn {
@@ -97,8 +126,17 @@ body {
     top: 1.25rem;
     right: 1rem;
     left: 1rem;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 0.6rem;
+  }
+
+  .nav-actions {
+    gap: 0.6rem;
+  }
+
+  .brand-logo {
+    font-size: 0.98rem;
+    padding: 0.3rem 0.5rem;
   }
 
   .nav-btn {
@@ -610,7 +648,7 @@ section:not(.contact) > .container > .section-intro {
 .pricing-item.popular {
   border: 2px solid rgba(59,179,189,0.55);
   box-shadow: 0 18px 60px rgba(59,179,189,0.18);
-  transform: translateY(-6px);
+  transform: none;
 }
 
 @media (min-width: 901px) {
