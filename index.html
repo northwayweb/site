@@ -34,7 +34,7 @@
     <section class="who-we-help reveal" id="who-we-help">
       <div class="container">
         <h2>Who We Help</h2>
-        <p class="section-lead">
+        <p class="section-intro">
           We specialize in helping local service businesses get online fast —
           without complexity, long timelines, or hidden costs.
         </p>
@@ -55,33 +55,36 @@
     <section class="what-we-do reveal" id="what-we-do">
       <div class="container">
         <h2>What We Do</h2>
-        <p class="section-lead">
-          Everything you need to launch a professional website that turns
-          visitors into real customer inquiries.
+        <p class="section-intro">
+          Everything you need to launch a professional website that turns visitors
+          into real customer inquiries.
         </p>
 
         <div class="services">
           <article class="service-card">
+            <div class="service-icon">🖥️</div>
             <h3>Website Design</h3>
             <p>
-              Modern, clean websites designed to build trust and showcase your
-              business professionally.
+              Clean, modern websites designed to build trust and clearly explain
+              what you do — so customers feel confident contacting you.
             </p>
           </article>
 
           <article class="service-card">
+            <div class="service-icon">📱</div>
             <h3>Mobile-Friendly Setup</h3>
             <p>
-              Your website looks great and works perfectly on phones, tablets,
-              and desktops.
+              Your site looks great and works perfectly on phones, tablets, and
+              desktops — where most customers will see it.
             </p>
           </article>
 
           <article class="service-card">
+            <div class="service-icon">☎️</div>
             <h3>Contact & Call Integration</h3>
             <p>
               Simple contact forms and click-to-call features that make it easy
-              for customers to reach you.
+              for customers to reach you instantly.
             </p>
           </article>
         </div>
@@ -90,17 +93,29 @@
 
     <!-- HOW IT WORKS -->
     <section class="how-it-works reveal" id="how-it-works">
-      <div class="container">
-        <h2>How It Works</h2>
-        <p class="section-lead">
-          A straightforward process designed for busy business owners.
-        </p>
+      <div class="container two-col">
+        <div>
+          <h2>How It Works</h2>
+          <p class="section-intro">
+            A straightforward process designed for busy business owners.
+          </p>
 
-        <ol class="steps">
-          <li><strong>Step 1:</strong> A quick call to understand your business</li>
-          <li><strong>Step 2:</strong> Your website is built within 72 hours</li>
-          <li><strong>Step 3:</strong> Your business goes live online</li>
-        </ol>
+          <ol class="steps">
+            <li><strong>Step 1:</strong> A quick call to understand your business</li>
+            <li><strong>Step 2:</strong> Your website is built within 72 hours</li>
+            <li><strong>Step 3:</strong> Your business goes live online</li>
+          </ol>
+        </div>
+
+        <div class="trust-panel">
+          <h3>Why businesses choose us</h3>
+          <ul>
+            <li>No long-term contracts</li>
+            <li>Fast turnaround times</li>
+            <li>Clear, upfront pricing</li>
+            <li>Ontario-based support</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -108,7 +123,7 @@
     <section class="demo-websites reveal" id="demo-websites">
       <div class="container">
         <h2>Demo Websites</h2>
-        <p class="section-lead">
+        <p class="section-intro">
           Example layouts showing what your website could look like.
         </p>
 
@@ -134,25 +149,44 @@
     <section class="pricing reveal" id="pricing">
       <div class="container">
         <h2>Pricing</h2>
-        <p class="section-lead">
+        <p class="section-intro">
           Simple, transparent pricing with no long-term contracts.
         </p>
 
         <div class="pricing-table">
           <div class="pricing-item">
             <h3>Starter Website</h3>
-            <p class="price">from $399</p>
+            <p class="price">$399</p>
+
+            <ul class="pricing-features">
+              <li>Professional one-page website</li>
+              <li>Mobile-friendly design</li>
+              <li>Contact form & click-to-call</li>
+              <li>Fast 72-hour turnaround</li>
+            </ul>
+
             <p class="pricing-note">
-              Ideal for businesses that need a clean, professional website fast.
+              One-time payment. No ongoing fees.
             </p>
+
+            <a href="#contact" class="cta-primary pricing-cta">
+              Get Started
+            </a>
           </div>
 
           <div class="pricing-item">
             <h3>Monthly Care & Hosting</h3>
-            <p class="price">from $49/month</p>
+            <p class="price">$49<span style="font-size:0.9rem">/month</span></p>
+
+            <ul class="pricing-features">
+              <li>Secure hosting</li>
+              <li>Ongoing updates & backups</li>
+              <li>Basic edits & support</li>
+              <li>Peace of mind maintenance</li>
+            </ul>
+
             <p class="pricing-note">
-              Hosting, updates, backups, and support — so you never have to worry
-              about your website.
+              Optional — cancel anytime.
             </p>
           </div>
         </div>
@@ -161,37 +195,54 @@
 
     <!-- CONTACT -->
     <section class="contact reveal" id="contact">
-      <div class="container">
-        <h2>Contact Us</h2>
-        <p class="section-lead">
-          Ready to get started? Reach out for a friendly chat or a free website
-          demo.
-        </p>
+      <div class="container two-col">
+        <div>
+          <h2>Contact Us</h2>
+          <p class="section-intro">
+            Ready to get started? Reach out for a friendly chat or a free website demo.
+          </p>
 
-        <form id="contact-form" novalidate>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required />
-          </div>
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
 
-          <div class="form-group">
-            <label for="business">Business Name</label>
-            <input type="text" id="business" name="business" required />
-          </div>
+            <div class="form-group">
+              <label for="business">Business Name</label>
+              <input type="text" id="business" name="business" required />
+            </div>
 
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
 
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-          </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
 
-          <button type="submit" class="cta-primary">Send Message</button>
-          <div id="form-status" aria-live="polite"></div>
-        </form>
+            <button type="submit" class="cta-primary">
+              Send Message
+            </button>
+
+            <small style="display:block;margin-top:0.6rem;color:#6b7c8f;">
+              We typically reply within one business day.
+            </small>
+
+            <div id="form-status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div class="trust-panel">
+          <h3>What happens next?</h3>
+          <p>
+            We’ll review your request and follow up with clear next steps — no pressure,
+            no sales tactics.
+          </p>
+          <p><strong>Serving businesses across Ontario.</strong></p>
+        </div>
       </div>
     </section>
   </main>
