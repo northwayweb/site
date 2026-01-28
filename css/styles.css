@@ -637,6 +637,15 @@ section:not(.contact) > .container > .section-intro {
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
 }
 
+@media (max-width: 600px) {
+  .pricing-badge {
+    position: static;
+    display: inline-flex;
+    align-self: flex-start;
+    margin-bottom: 0.65rem;
+  }
+}
+
 .pricing-cta {
   display: inline-flex;
   justify-content: center;
