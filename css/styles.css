@@ -748,13 +748,19 @@ textarea {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 0.35rem 0 1.25rem;
+  margin: 0.2rem 0 1.35rem;
+}
+
+.contact form div[data-netlify-recaptcha="true"] > * {
+  max-width: 100%;
+  display: block;
+  transform: scale(0.84);
+  transform-origin: 50% 0;
 }
 
 .contact form div[data-netlify-recaptcha="true"] iframe {
   max-width: 100%;
-  transform: scale(0.92);
-  transform-origin: 50% 0;
+  display: block;
 }
 
 .contact form {
@@ -818,8 +824,8 @@ textarea {
 }
 
 @media (max-width: 420px) {
-  .contact form div[data-netlify-recaptcha="true"] iframe {
-    transform: scale(0.86);
+  .contact form div[data-netlify-recaptcha="true"] > * {
+    transform: scale(0.78);
   }
 }
 
