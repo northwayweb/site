@@ -220,6 +220,30 @@ h3 {
   max-width: 1000px;
 }
 
+section:not(.contact) > .container > h2 {
+  text-align: center;
+}
+
+section:not(.contact) > .container > .section-intro {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.how-it-works h2,
+.how-it-works .section-intro {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact h2,
+.contact .section-intro {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 @media (max-width: 900px) {
   section {
     padding: 4.25rem 0;
@@ -305,6 +329,10 @@ h3 {
   align-items: stretch;
 }
 
+.who-grid .who-card:last-child {
+  grid-column: 2;
+}
+
 .who-card {
   background: white;
   border-radius: 18px;
@@ -348,6 +376,11 @@ h3 {
 /* Responsive Who We Help */
 @media (max-width: 900px) {
   .who-grid { grid-template-columns: repeat(2, 1fr); }
+  .who-grid .who-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 360px;
+    justify-self: center;
+  }
   .who-we-help h2,
   .who-we-help .section-intro {
     text-align: center;
@@ -490,12 +523,14 @@ h3 {
   list-style: none;
   padding: 0;
   margin: 1.5rem 0;
+  text-align: left;
 }
 
 .pricing-features li {
   padding-left: 1.6rem;
   position: relative;
   margin-bottom: 0.7rem;
+  text-align: left;
 }
 
 .pricing-features li::before {
@@ -586,6 +621,14 @@ label {
 
 .form-group {
   margin-bottom: 1.1rem;
+}
+
+.char-count {
+  margin-top: -0.35rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: left;
 }
 
 input,
@@ -739,6 +782,7 @@ textarea {
   margin: 1.75rem 0 0;
   padding: 0;
   list-style: none;
+  text-align: left;
 }
 
 .steps li {
@@ -748,10 +792,9 @@ textarea {
   border-radius: 16px;
   padding: 1.1rem 1.2rem;
   margin-bottom: 1rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 0.8rem;
-  align-items: start;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
 }
 
 .how-it-works .trust-panel ul {
@@ -778,6 +821,7 @@ textarea {
   color: var(--accent);
   font-weight: 800;
   line-height: 1.2;
+  margin-top: 0.05rem;
 }
 
 .steps li strong {

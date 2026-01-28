@@ -3,6 +3,20 @@
 // ===============================
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
+const messageField = document.getElementById('message');
+const messageCount = document.getElementById('message-count');
+const MAX_MESSAGE_CHARS = 500;
+
+function updateMessageCount() {
+  if (!messageField || !messageCount) return;
+  const current = messageField.value.length;
+  messageCount.textContent = `${current}/${MAX_MESSAGE_CHARS}`;
+}
+
+if (messageField && messageCount) {
+  updateMessageCount();
+  messageField.addEventListener('input', updateMessageCount);
+}
 
 if (form) {
   form.addEventListener('submit', function (e) {
@@ -27,11 +41,18 @@ if (form) {
       return;
     }
 
+    if (message.length > MAX_MESSAGE_CHARS) {
+      status.textContent = `Message must be ${MAX_MESSAGE_CHARS} characters or less.`;
+      status.style.color = '#c00';
+      return;
+    }
+
     status.textContent =
       'Thank you! Your message has been received. We will get back to you shortly.';
     status.style.color = '#18405a';
 
     form.reset();
+    updateMessageCount();
   });
 }
 
