@@ -809,6 +809,19 @@ textarea {
     padding: 1.25rem;
   }
 
+  .contact form .netlify-recaptcha {
+    justify-content: center;
+  }
+
+  .contact form .netlify-recaptcha > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact small {
+    text-align: center;
+  }
+
   .contact h2,
   .contact .section-intro {
     text-align: center;
