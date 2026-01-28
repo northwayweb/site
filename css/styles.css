@@ -742,12 +742,15 @@ textarea {
   background: rgba(255,255,255,0.9);
 }
 
-.contact [data-netlify-recaptcha="true"] {
+.contact form div[data-netlify-recaptcha="true"] {
   max-width: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin: 0.75rem 0 1.1rem;
 }
 
-.contact [data-netlify-recaptcha="true"] iframe {
+.contact form div[data-netlify-recaptcha="true"] iframe {
   max-width: 100%;
 }
 
@@ -812,9 +815,9 @@ textarea {
 }
 
 @media (max-width: 420px) {
-  .contact [data-netlify-recaptcha="true"] {
+  .contact form div[data-netlify-recaptcha="true"] {
     transform: scale(0.92);
-    transform-origin: 0 0;
+    transform-origin: 50% 0;
   }
 }
 
