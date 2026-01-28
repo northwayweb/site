@@ -848,3 +848,67 @@ section:nth-of-type(even) {
 }
 
 
+/* ===============================
+   ICON + LABEL CHIPS
+   =============================== */
+
+.icon-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.icon-chips li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 170px;
+  justify-content: center;
+
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+
+  background: rgba(59,179,189,0.12);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.icon-chips svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  fill: none;
+}
+
+
+/* ===============================
+   SECTION DIVIDER RHYTHM
+   =============================== */
+
+section + section {
+  position: relative;
+}
+
+section + section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 1px;
+  background: rgba(15,47,68,0.08);
+}
+
+
+/* ===============================
+   FOOTER COPYRIGHT
+   =============================== */
+
+.footer-location {
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
