@@ -762,6 +762,10 @@ textarea {
   align-items: start;
 }
 
+.two-col > * {
+  min-width: 0;
+}
+
 .trust-panel {
   background: white;
   border-radius: var(--radius);
@@ -789,6 +793,10 @@ textarea {
 }
 
 @media (max-width: 600px) {
+  .contact form {
+    padding: 1.25rem;
+  }
+
   .contact h2,
   .contact .section-intro {
     text-align: center;
@@ -800,6 +808,13 @@ textarea {
     font-size: 0.95rem;
     line-height: 1.35;
     display: inline-block;
+  }
+}
+
+@media (max-width: 420px) {
+  .contact [data-netlify-recaptcha="true"] {
+    transform: scale(0.92);
+    transform-origin: 0 0;
   }
 }
 
