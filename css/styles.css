@@ -454,8 +454,15 @@ section.pricing {
     rgba(59,179,189,0.02)
   );
   border-radius: 22px;
-  padding: 3rem 3rem;
+  padding: 3rem;
 }
+
+/* Align heading + text with other sections */
+.who-we-help h2,
+.who-we-help .section-intro {
+  margin-left: 0;
+}
+
 
 .who-we-help p {
   max-width: 680px;
@@ -662,10 +669,23 @@ section:nth-of-type(even) {
     justify-content: center;
     gap: 0.7rem;
   }
+}
 
   .industry-list li {
-    font-size: 0.95rem;
-    padding: 0.55rem 1.1rem;
+  background: rgba(59,179,189,0.14);
+  color: var(--primary);
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  min-width: 150px;
+  text-align: center;
+}
+
+
+@media (min-width: 768px) {
+  .industry-list li {
+    min-width: 170px;
   }
 }
 
@@ -815,5 +835,16 @@ section:nth-of-type(even) {
   font-size: 1.1rem;
 }
 
+
+@media (max-width: 600px) {
+  .steps li {
+    font-size: 0.95rem;
+  }
+
+  .steps li strong {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+}
 
 
