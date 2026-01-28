@@ -950,6 +950,26 @@ textarea {
   }
 }
 
+@media (max-width: 900px) {
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+  }
+
+  .testimonial-card blockquote {
+    display: -webkit-box;
+    line-clamp: 5;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .testimonial-author {
+    margin-top: auto;
+  }
+}
+
 .steps {
   margin: 1.75rem 0 0;
   padding: 0;
