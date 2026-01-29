@@ -209,8 +209,11 @@ body {
 .hero-mock .mock-line.long { width: 92%; }
 
 .topbar {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 60;
   width: 100%;
   backdrop-filter: blur(12px);
@@ -888,6 +891,14 @@ section:not(.contact) > .container > .section-intro {
 
   .hero-trust {
     justify-content: center;
+  }
+
+  .hero-panel {
+    min-height: 320px;
+  }
+
+  .hero-rotator-img {
+    object-fit: contain;
   }
 }
 
