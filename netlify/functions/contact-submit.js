@@ -1,4 +1,9 @@
 const crypto = require('crypto');
+const dns = require('dns');
+
+if (typeof dns.setDefaultResultOrder === 'function') {
+  dns.setDefaultResultOrder('ipv4first');
+}
 
 function base64UrlDecodeToString(b64url) {
   const b64 = b64url.replace(/-/g, '+').replace(/_/g, '/');
@@ -144,13 +149,22 @@ exports.handler = async (event) => {
     };
   }
 
-  const res = await fetch(`${siteUrl}/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: forward.toString(),
-  });
+  let res;
+  try {
+    res = await fetch(`${siteUrl}/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: forward.toString(),
+    });
+  } catch (e) {
+    return {
+      statusCode: 303,
+      headers: { Location: '/?error=submit#contact' },
+      body: '',
+    };
+  }
 
   if (!res.ok) {
     return {
