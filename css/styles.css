@@ -106,12 +106,15 @@ body {
 .hero-panel {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 540px;
+  justify-self: end;
   border-radius: calc(var(--radius) + 10px);
   border: 1px solid var(--border);
   background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.70));
   box-shadow: var(--shadow-lg);
   overflow: hidden;
-  min-height: 420px;
+  aspect-ratio: 16 / 10;
 }
 
 .hero-panel::before {
@@ -820,7 +823,7 @@ section:not(.contact) > .container > .section-intro {
   }
 
   .hero-panel {
-    min-height: 380px;
+    justify-self: center;
   }
 }
 
@@ -895,10 +898,6 @@ section:not(.contact) > .container > .section-intro {
 
   .hero-panel {
     min-height: 320px;
-  }
-
-  .hero-rotator-img {
-    object-fit: contain;
   }
 }
 
