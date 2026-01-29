@@ -1,2 +1,8 @@
 [functions]
   directory = "netlify/functions"
+
+[[redirects]]
+  from = "https://northwayweb.netlify.app/*"
+  to = "https://northwayweb.ca/:splat"
+  status = 301
+  force = true
