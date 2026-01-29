@@ -421,6 +421,7 @@ section:not(.contact) > .container > .section-intro {
 @media (max-width: 600px) {
   .contact-premium .contact-surface {
     padding: 1rem;
+    margin-right: 0.9rem;
   }
 
   .contact-premium .contact-form-wrap,
