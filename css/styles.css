@@ -62,16 +62,101 @@ body {
   position: relative;
 }
 
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  backdrop-filter: blur(12px);
+  background: rgba(10,34,50,0.72);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
 .top-nav {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  right: 2rem;
+  position: relative;
+  padding: 0.95rem 0;
+}
+
+.top-nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
+
+.site-nav-drawer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-nav-links a {
+  color: rgba(255,255,255,0.86);
+  text-decoration: none;
+  font-weight: 650;
+  padding: 0.38rem 0.55rem;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.site-nav-links a:hover,
+.site-nav-links a:focus-visible {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.18);
+  outline: none;
+}
+
+.site-nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  padding: 0;
+  cursor: pointer;
+}
+
+.site-nav-toggle:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.26);
+}
+
+.site-nav-toggle-bars {
+  position: relative;
+  width: 20px;
+  height: 2px;
+  background: rgba(255,255,255,0.90);
+  border-radius: 999px;
+  transition: background 180ms ease;
+}
+
+.site-nav-toggle-bars::before,
+.site-nav-toggle-bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 2px;
+  background: rgba(255,255,255,0.90);
+  border-radius: 999px;
+  transition: transform 180ms ease, top 180ms ease;
+}
+
+.site-nav-toggle-bars::before { top: -6px; }
+.site-nav-toggle-bars::after { top: 6px; }
+
+#site-nav.is-open .site-nav-toggle-bars { background: transparent; }
+#site-nav.is-open .site-nav-toggle-bars::before { top: 0; transform: rotate(45deg); }
+#site-nav.is-open .site-nav-toggle-bars::after { top: 0; transform: rotate(-45deg); }
 
 .nav-actions {
   display: flex;
@@ -127,15 +212,7 @@ body {
 
 @media (max-width: 600px) {
   .top-nav {
-    top: 1.25rem;
-    right: 1rem;
-    left: 1rem;
-    justify-content: space-between;
-    gap: 0.6rem;
-  }
-
-  .nav-actions {
-    gap: 0.6rem;
+    padding: 0.85rem 0;
   }
 
   .brand-logo {
@@ -143,11 +220,37 @@ body {
     padding: 0.3rem 0.5rem;
   }
 
-  .nav-btn {
-    min-width: 104px;
-    padding: 0.5rem 1.05rem;
-    font-size: 0.95rem;
-    height: 38px;
+  .top-nav-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .site-nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav-drawer {
+    grid-column: 1 / -1;
+    display: none;
+    padding: 0.85rem 0 0.25rem;
+    margin-top: 0.35rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  #site-nav.is-open .site-nav-drawer {
+    display: flex;
+  }
+
+  .site-nav-links {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0.65rem;
   }
 }
 
@@ -187,6 +290,10 @@ body {
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color: white;
   box-shadow: 0 15px 40px rgba(59,179,189,0.45);
+}
+
+button.cta-primary {
+  cursor: pointer;
 }
 
 .cta-primary:hover {
@@ -1575,6 +1682,29 @@ textarea:focus-visible {
   text-align: center;
   font-weight: 700;
   color: var(--primary);
+}
+
+.demo-title {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.demo-cta {
+  margin-top: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.demo-card:hover .demo-cta {
+  transform: translateX(3px);
+  color: var(--accent);
 }
 
 .demo-card {

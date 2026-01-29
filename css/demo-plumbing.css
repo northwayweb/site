@@ -125,7 +125,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid rgb
   background:rgba(0,0,0,0.22);
   border-radius:16px;
   padding:0.95rem 0.95rem;
+  transition:transform 240ms ease, border-color 240ms ease, background 240ms ease;
 }
+
+.badge:hover{transform:translateY(-6px); border-color:rgba(255,255,255,0.20); background:rgba(0,0,0,0.28);}
 
 .badge strong{display:block; letter-spacing:-0.02em;}
 .badge span{display:block; margin-top:0.15rem; color:rgba(255,255,255,0.74); font-weight:700; font-size:0.9rem;}
@@ -137,7 +140,36 @@ section{padding:4.2rem 0;}
 
 .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:1.2rem;}
 
-.card{border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)); border-radius:var(--radius); padding:1.3rem; box-shadow:0 20px 60px rgba(0,0,0,0.28);}
+.card{border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)); border-radius:var(--radius); padding:1.3rem; box-shadow:0 20px 60px rgba(0,0,0,0.28); position:relative; overflow:hidden; transform:translateZ(0); transition:transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease; animation:cardIn 520ms ease both;}
+
+.card::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:radial-gradient(520px 220px at 18% 0%, rgba(249,115,22,0.22), transparent 60%),
+             radial-gradient(520px 220px at 82% 100%, rgba(34,197,94,0.18), transparent 60%);
+  opacity:0;
+  transition:opacity 240ms ease;
+  pointer-events:none;
+}
+
+.card:hover{
+  transform:translateY(-8px) scale(1.01);
+  box-shadow:0 30px 90px rgba(0,0,0,0.44);
+  border-color:rgba(255,255,255,0.18);
+}
+
+.card:hover::after{opacity:1;}
+
+.grid > .card:nth-child(1){animation-delay:40ms;}
+.grid > .card:nth-child(2){animation-delay:90ms;}
+.grid > .card:nth-child(3){animation-delay:140ms;}
+.grid > .card:nth-child(4){animation-delay:190ms;}
+
+details{transition:transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;}
+details:hover{transform:translateY(-6px); box-shadow:0 22px 70px rgba(0,0,0,0.38); border-color:rgba(255,255,255,0.18);}
+
+@keyframes cardIn{from{opacity:0; transform:translateY(18px) scale(0.99);}to{opacity:1; transform:translateY(0) scale(1);}}
 
 .service{grid-column:span 4; min-height:172px; position:relative; overflow:hidden;}
 .service::before{content:""; position:absolute; inset:0; background:radial-gradient(320px 200px at 20% 0%, rgba(249,115,22,0.22), transparent 62%), radial-gradient(320px 200px at 90% 90%, rgba(34,197,94,0.14), transparent 62%); opacity:0.95; pointer-events:none;}
@@ -149,7 +181,8 @@ section{padding:4.2rem 0;}
 .about p{margin:0.8rem 0 0; color:rgba(255,255,255,0.74);}
 
 .stats{grid-column:span 5; display:grid; grid-template-columns:1fr; gap:1rem;}
-.stat{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:1rem 1.05rem; background:rgba(255,255,255,0.06);}
+.stat{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:1rem 1.05rem; background:rgba(255,255,255,0.06); transition:transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;}
+.stat:hover{transform:translateY(-6px); box-shadow:0 22px 70px rgba(0,0,0,0.38); border-color:rgba(255,255,255,0.18);}
 .stat strong{font-size:1.55rem; letter-spacing:-0.03em; background:linear-gradient(135deg, #ffb703, var(--brand)); -webkit-background-clip:text; background-clip:text; color:transparent;}
 .stat span{color:rgba(255,255,255,0.76); font-weight:800;}
 
@@ -269,4 +302,13 @@ footer .mini{color:rgba(255,255,255,0.58); font-weight:800;}
 @media (max-width: 520px){
   .stats{grid-template-columns:1fr;}
   .badge-stack{grid-template-columns:1fr;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  .btn{transition:none;}
+  .card{animation:none; transition:none;}
+  details{transition:none;}
+  .stat{transition:none;}
+  .nav-toggle-bars,.nav-toggle-bars::before,.nav-toggle-bars::after{transition:none;}
 }

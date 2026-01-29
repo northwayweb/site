@@ -209,6 +209,27 @@ if (form) {
   });
 }
 
+function setupSiteNav() {
+  const nav = document.getElementById('site-nav');
+  if (!nav) return;
+
+  const toggle = nav.querySelector('.site-nav-toggle');
+  const menu = document.getElementById('site-nav-menu');
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 showContactErrorFromUrl();
 refreshMathChallenge();
 
@@ -332,6 +353,7 @@ function centerRecaptchaMobile() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  setupSiteNav();
   return;
 });
 
