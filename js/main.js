@@ -7,19 +7,66 @@ const messageField = document.getElementById('message');
 const messageCount = document.getElementById('message-count');
 const MAX_MESSAGE_CHARS = 500;
 
-let currentMathAnswer = null;
+let currentMathToken = '';
 
-function generateMathChallenge() {
+function showStatus(message, color) {
+  const statusEl = getStatusEl();
+  if (!statusEl) return;
+  statusEl.textContent = message;
+  statusEl.style.color = color || '';
+}
+
+function setMathToken(token) {
+  currentMathToken = token || '';
+  const tokenEl = document.getElementById('math-token');
+  if (tokenEl) tokenEl.value = currentMathToken;
+}
+
+async function refreshMathChallenge() {
   const questionEl = document.getElementById('math-question');
   const answerEl = document.getElementById('math-answer');
 
   if (!questionEl || !answerEl) return;
 
-  const a = Math.floor(Math.random() * 9) + 1;
-  const b = Math.floor(Math.random() * 9) + 1;
-  currentMathAnswer = a + b;
-  questionEl.textContent = `${a} + ${b} =`;
-  answerEl.value = '';
+  try {
+    const res = await fetch('/.netlify/functions/math-challenge', { cache: 'no-store' });
+    if (!res.ok) throw new Error('challenge_fetch_failed');
+    const data = await res.json();
+    if (!data || typeof data.question !== 'string' || typeof data.token !== 'string') {
+      throw new Error('challenge_invalid');
+    }
+
+    questionEl.textContent = data.question;
+    answerEl.value = '';
+    setMathToken(data.token);
+  } catch (e) {
+    setMathToken('');
+    questionEl.textContent = 'Loading…';
+    showStatus('Unable to load the quick question. Please refresh and try again.', '#c00');
+  }
+}
+
+function showContactErrorFromUrl() {
+  const params = new URLSearchParams(window.location.search || '');
+  const code = params.get('error');
+  if (!code) return;
+
+  const messages = {
+    challenge: 'Please answer the quick question to continue.',
+    incorrect: 'That answer wasn’t correct. Please try the new question.',
+    expired: 'That question expired. Please try the new question.',
+    submit: 'Something went wrong while submitting. Please try again.',
+  };
+
+  showStatus(messages[code] || 'Please try again.', '#c00');
+
+  try {
+    const next = new URL(window.location.href);
+    next.searchParams.delete('error');
+    window.history.replaceState({}, '', next.pathname + next.search + next.hash);
+  } catch (e) {
+    // ignore
+  }
 }
 
 function getFormValue(formEl, fieldName) {
@@ -95,20 +142,33 @@ if (form) {
     const mathAnswerRaw = mathAnswerEl ? String(mathAnswerEl.value || '').trim() : '';
     const mathAnswer = Number.parseInt(mathAnswerRaw, 10);
 
-    if (Number.isNaN(mathAnswer) || currentMathAnswer === null || mathAnswer !== currentMathAnswer) {
+    const tokenEl = document.getElementById('math-token');
+    const token = tokenEl ? String(tokenEl.value || '').trim() : '';
+
+    if (!token) {
       e.preventDefault();
       if (statusEl) {
-        statusEl.textContent = 'Please answer the quick question correctly.';
+        statusEl.textContent = 'Please wait for the quick question to load.';
         statusEl.style.color = '#c00';
       }
-      generateMathChallenge();
+      refreshMathChallenge();
+      return;
+    }
+
+    if (Number.isNaN(mathAnswer)) {
+      e.preventDefault();
+      if (statusEl) {
+        statusEl.textContent = 'Please answer the quick question.';
+        statusEl.style.color = '#c00';
+      }
       if (mathAnswerEl) mathAnswerEl.focus();
       return;
     }
   });
 }
 
-generateMathChallenge();
+showContactErrorFromUrl();
+refreshMathChallenge();
 
 // ===============================
 // Scroll Reveal Animations

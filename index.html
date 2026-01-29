@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Northway Web – Building websites that help local businesses grow</title>
-  <link rel="stylesheet" href="css/styles.css?v=20260128-24" />
+  <link rel="stylesheet" href="css/styles.css?v=20260128-25" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -605,12 +605,13 @@
               <form
                 name="contact"
                 method="POST"
-                action="/thanks.html?submitted=1"
+                action="/.netlify/functions/contact-submit"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 id="contact-form"
               >
                 <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="math_token" id="math-token" value="" />
 
                 <p style="display:none;">
                   <label>
@@ -648,7 +649,7 @@
                     <label for="math-answer" class="math-label">Quick question</label>
                     <div class="math-row">
                       <span class="math-question" id="math-question"></span>
-                      <input type="text" id="math-answer" inputmode="numeric" autocomplete="off" required />
+                      <input type="text" id="math-answer" name="math_answer" inputmode="numeric" autocomplete="off" required />
                     </div>
                   </div>
                   <button type="submit" class="cta-primary">Send Message</button>
@@ -683,6 +684,6 @@
 </footer>
 
 
-  <script src="js/main.js?v=20260128-10"></script>
+  <script src="js/main.js?v=20260128-11"></script>
 </body>
 </html>
