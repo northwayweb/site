@@ -833,13 +833,20 @@ textarea {
   }
 
   .contact form .netlify-recaptcha > * {
-    width: 304px;
+    width: 100%;
     max-width: 100%;
-    display: block;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
+    transform: none;
+  }
+
+  .contact form .netlify-recaptcha .g-recaptcha,
+  .contact form .netlify-recaptcha iframe {
     margin-left: auto;
     margin-right: auto;
-    zoom: 1;
-    transform: none;
+    display: block;
   }
 
   .contact small {
@@ -862,7 +869,6 @@ textarea {
 
 @media (max-width: 420px) {
   .contact form .netlify-recaptcha > * {
-    zoom: 1;
     transform: none;
   }
 }
