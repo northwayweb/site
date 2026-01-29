@@ -378,6 +378,66 @@ section:not(.contact) > .container > .section-intro {
   margin-top: 0.9rem;
 }
 
+.contact-premium #form-status.form-status {
+  width: 100%;
+  max-width: 420px;
+}
+
+.contact-premium #form-status.form-status--success .form-success {
+  background: linear-gradient(180deg, rgba(59,179,189,0.10), rgba(255,255,255,0.95));
+  border: 1px solid rgba(59,179,189,0.25);
+  border-radius: 16px;
+  padding: 1rem 1.05rem;
+  color: #18405a;
+  animation: formFadeUp 360ms ease-out both;
+}
+
+.contact-premium #form-status .form-success__title {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.contact-premium #form-status .form-success__text {
+  margin-top: 0.35rem;
+  color: #355a73;
+  line-height: 1.55;
+}
+
+.contact-premium #form-status .form-flower {
+  display: inline-block;
+  transform-origin: 50% 70%;
+  animation: flowerPop 700ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+@keyframes formFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flowerPop {
+  0% {
+    transform: scale(0.6) rotate(-10deg);
+    filter: blur(1px);
+  }
+  55% {
+    transform: scale(1.25) rotate(10deg);
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
 .contact-premium .contact-aside {
   background: rgba(255,255,255,0.7);
   border: 1px solid rgba(15,47,68,0.06);

@@ -43,6 +43,7 @@ if (form) {
   form.addEventListener('submit', function (e) {
     status.textContent = '';
     status.style.color = '';
+    status.className = '';
 
     const name = getFormValue(form, 'name');
     const business = getFormValue(form, 'business');
@@ -86,8 +87,46 @@ if (form) {
     const isNetlifyForm = form.hasAttribute('data-netlify');
 
     if (isNetlifyForm) {
+      e.preventDefault();
+
       status.textContent = 'Submitting…';
       status.style.color = '#18405a';
+      status.className = 'form-status form-status--submitting';
+
+      const formData = new FormData(form);
+      const body = new URLSearchParams();
+      for (const [key, value] of formData.entries()) {
+        body.append(key, String(value));
+      }
+
+      fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: body.toString(),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error('Submission failed');
+
+          status.className = 'form-status form-status--success';
+          status.innerHTML =
+            '<div class="form-success" role="status">' +
+            '<div class="form-success__title">Thank you! <span class="form-flower" aria-hidden="true">🌸</span></div>' +
+            '<div class="form-success__text">Your message has been received. We will get back to you shortly.</div>' +
+            '</div>';
+
+          form.reset();
+          updateMessageCount();
+          generateMathChallenge();
+        })
+        .catch(() => {
+          status.className = 'form-status form-status--error';
+          status.textContent =
+            'Something went wrong while submitting. Please try again or email support@northwayweb.ca.';
+          status.style.color = '#c00';
+        });
+
       return;
     }
 
