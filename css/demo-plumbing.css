@@ -22,6 +22,7 @@ body{
              radial-gradient(900px 520px at 88% 18%, rgba(34,197,94,0.12), transparent 64%),
              var(--bg);
   line-height:1.55;
+  hyphens:none;
   -webkit-font-smoothing:antialiased;
   text-rendering:geometricPrecision;
 }

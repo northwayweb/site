@@ -21,6 +21,7 @@ body{
              radial-gradient(900px 520px at 92% 20%, rgba(34,197,94,0.14), transparent 62%),
              var(--bg);
   line-height:1.55;
+  hyphens:none;
   -webkit-font-smoothing:antialiased;
   text-rendering:geometricPrecision;
 }
@@ -295,15 +296,16 @@ footer .mini{color:rgba(75,85,104,0.78); font-weight:800;}
 
   .hero-trust{
     display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:0.35rem 0.8rem;
+    grid-template-columns:auto auto;
+    gap:0.3rem 0.65rem;
+    justify-content:center;
     justify-items:center;
     text-align:center;
-    font-size:0.78rem;
+    font-size:0.76rem;
   }
 
-  .hero-trust span:first-child{grid-column:1 / -1; white-space:nowrap;}
-  .hero-trust span:last-child{grid-column:auto;}
+  .hero-trust span{white-space:nowrap;}
+  .hero-trust span:first-child{grid-column:1 / -1;}
 
   .section-head{
     align-items: center;
