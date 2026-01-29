@@ -92,7 +92,7 @@ if (form) {
     }
 
     const mathAnswerEl = document.getElementById('math-answer');
-    const mathAnswerRaw = getFormValue(form, 'math_answer');
+    const mathAnswerRaw = mathAnswerEl ? String(mathAnswerEl.value || '').trim() : '';
     const mathAnswer = Number.parseInt(mathAnswerRaw, 10);
 
     if (Number.isNaN(mathAnswer) || currentMathAnswer === null || mathAnswer !== currentMathAnswer) {
