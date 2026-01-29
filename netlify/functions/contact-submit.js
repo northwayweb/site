@@ -23,11 +23,11 @@ function getSiteUrl(event) {
   const proto = (event.headers && (event.headers['x-forwarded-proto'] || event.headers['X-Forwarded-Proto'])) || 'https';
   const host = (event.headers && (event.headers.host || event.headers.Host)) || '';
 
+  if (host) return `${proto}://${host}`;
+
   if (process.env.URL) return process.env.URL;
   if (process.env.DEPLOY_PRIME_URL) return process.env.DEPLOY_PRIME_URL;
   if (process.env.SITE_URL) return process.env.SITE_URL;
-
-  if (host) return `${proto}://${host}`;
   return '';
 }
 
@@ -159,6 +159,7 @@ exports.handler = async (event) => {
       body: forward.toString(),
     });
   } catch (e) {
+    console.error('Forwarding to Netlify Forms failed (fetch error):', e);
     return {
       statusCode: 303,
       headers: { Location: '/?error=submit#contact' },
@@ -167,6 +168,19 @@ exports.handler = async (event) => {
   }
 
   if (res.status >= 400) {
+    let bodyPreview = '';
+    try {
+      const text = await res.text();
+      bodyPreview = String(text || '').slice(0, 400);
+    } catch (e) {
+      bodyPreview = '';
+    }
+    console.error('Forwarding to Netlify Forms failed (bad status):', {
+      status: res.status,
+      statusText: res.statusText,
+      siteUrl,
+      bodyPreview,
+    });
     return {
       statusCode: 303,
       headers: { Location: '/?error=submit#contact' },
