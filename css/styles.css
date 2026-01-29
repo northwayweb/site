@@ -93,7 +93,7 @@ body {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: center;
 }
@@ -107,7 +107,7 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 540px;
+  max-width: 100%;
   justify-self: end;
   border-radius: calc(var(--radius) + 10px);
   border: 1px solid var(--border);
@@ -130,7 +130,7 @@ body {
 
 .hero-mock {
   position: absolute;
-  inset: 18px;
+  inset: 4%;
   border-radius: 22px;
   border: 1px solid rgba(15,23,42,0.10);
   background:
@@ -146,7 +146,7 @@ body {
 
 .hero-rotator {
   position: absolute;
-  inset: 18px;
+  inset: 4%;
   border-radius: 22px;
   overflow: hidden;
   border: 1px solid rgba(15,23,42,0.10);
@@ -894,10 +894,6 @@ section:not(.contact) > .container > .section-intro {
 
   .hero-trust {
     justify-content: center;
-  }
-
-  .hero-panel {
-    min-height: 320px;
   }
 }
 
