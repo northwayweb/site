@@ -166,7 +166,7 @@ exports.handler = async (event) => {
     };
   }
 
-  if (!res.ok) {
+  if (res.status >= 400) {
     return {
       statusCode: 303,
       headers: { Location: '/?error=submit#contact' },
