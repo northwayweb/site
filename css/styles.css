@@ -853,11 +853,27 @@ section:not(.contact) > .container > .section-intro {
 }
 
 @media (max-width: 600px) {
+  .services,
+  .pricing-table {
+    align-items: stretch;
+    grid-auto-rows: 1fr;
+  }
+
   .service-card,
   .pricing-item,
   .demo-card {
     text-align: center;
     padding: 1.6rem 1.3rem;
+    height: 100%;
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card p {
+    flex: 1 1 auto;
   }
 
   .service-icon {
