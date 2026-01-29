@@ -333,7 +333,8 @@ section:not(.contact) > .container > .section-intro {
 }
 
 .contact-premium .contact-actions {
-  max-width: 304px;
+  width: 304px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -344,6 +345,7 @@ section:not(.contact) > .container > .section-intro {
 .contact-premium .contact-actions button[type="submit"] {
   width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 .contact-premium .contact-note {
