@@ -71,6 +71,12 @@
           return;
         }
 
+        try {
+          sessionStorage.removeItem('nw_contact_draft_v1');
+        } catch (e) {
+          // ignore
+        }
+
         if (note) {
           note.style.display = 'block';
           note.textContent = 'Redirecting you back in a few seconds…';
@@ -88,6 +94,6 @@
     })();
   </script>
 
-  <script src="js/main.js?v=20260128-11"></script>
+  <script src="js/main.js?v=20260128-12"></script>
 </body>
 </html>

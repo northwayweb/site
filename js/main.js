@@ -7,6 +7,8 @@ const messageField = document.getElementById('message');
 const messageCount = document.getElementById('message-count');
 const MAX_MESSAGE_CHARS = 500;
 
+const CONTACT_DRAFT_KEY = 'nw_contact_draft_v1';
+
 let currentMathToken = '';
 
 function showStatus(message, color) {
@@ -14,6 +16,42 @@ function showStatus(message, color) {
   if (!statusEl) return;
   statusEl.textContent = message;
   statusEl.style.color = color || '';
+}
+
+function saveContactDraft() {
+  if (!form) return;
+  try {
+    const draft = {
+      name: getFormValue(form, 'name'),
+      business: getFormValue(form, 'business'),
+      email: getFormValue(form, 'email'),
+      message: getFormValue(form, 'message'),
+    };
+    sessionStorage.setItem(CONTACT_DRAFT_KEY, JSON.stringify(draft));
+  } catch (e) {
+    // ignore
+  }
+}
+
+function restoreContactDraft() {
+  if (!form) return;
+  try {
+    const raw = sessionStorage.getItem(CONTACT_DRAFT_KEY);
+    if (!raw) return;
+    const draft = JSON.parse(raw);
+
+    const nameEl = form.elements.namedItem('name');
+    const businessEl = form.elements.namedItem('business');
+    const emailEl = form.elements.namedItem('email');
+    const messageEl = form.elements.namedItem('message');
+
+    if (nameEl && typeof draft.name === 'string' && !String(nameEl.value || '').trim()) nameEl.value = draft.name;
+    if (businessEl && typeof draft.business === 'string' && !String(businessEl.value || '').trim()) businessEl.value = draft.business;
+    if (emailEl && typeof draft.email === 'string' && !String(emailEl.value || '').trim()) emailEl.value = draft.email;
+    if (messageEl && typeof draft.message === 'string' && !String(messageEl.value || '').trim()) messageEl.value = draft.message;
+  } catch (e) {
+    // ignore
+  }
 }
 
 function setMathToken(token) {
@@ -50,6 +88,8 @@ function showContactErrorFromUrl() {
   const params = new URLSearchParams(window.location.search || '');
   const code = params.get('error');
   if (!code) return;
+
+  restoreContactDraft();
 
   const messages = {
     challenge: 'Please answer the quick question to continue.',
@@ -164,6 +204,8 @@ if (form) {
       if (mathAnswerEl) mathAnswerEl.focus();
       return;
     }
+
+    saveContactDraft();
   });
 }
 
