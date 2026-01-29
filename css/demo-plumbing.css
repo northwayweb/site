@@ -51,6 +51,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid rgb
 .btn{display:inline-flex; align-items:center; justify-content:center; padding:0.78rem 1.05rem; border-radius:999px; border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.92); font-weight:850; transition:transform 180ms ease, background 180ms ease, border-color 180ms ease; white-space:nowrap;}
 .btn:hover{transform:translateY(-2px); background:rgba(255,255,255,0.10); border-color:rgba(255,255,255,0.20);}
 .btn-primary{border:0; background:linear-gradient(135deg, var(--brand), #ffb703); color:#0b141c; box-shadow:0 22px 70px rgba(249,115,22,0.22);}
+.btn-primary:hover{color:rgba(255,255,255,0.96);}
+.btn-primary:visited{color:rgba(255,255,255,0.96);}
 
 .hero{position:relative; padding:4.6rem 0 3.8rem; overflow:hidden;}
 .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:2rem; align-items:center;}
@@ -160,6 +162,106 @@ footer .mini{color:rgba(255,255,255,0.58); font-weight:800;}
   .cta-inner{grid-template-columns:1fr;}
   .cta-inner .actions{justify-content:flex-start;}
   .section-head{flex-direction:column; align-items:flex-start;}
+}
+
+@media (max-width: 600px){
+  .nav{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .brand{
+    justify-content: center;
+  }
+
+  .nav-links{
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .nav-actions{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-actions .btn{
+    width: min(360px, 100%);
+  }
+
+  .hero-grid > div:first-child{
+    text-align: center;
+  }
+
+  .kicker{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero p{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-actions .btn{
+    width: min(360px, 100%);
+    min-height: 48px;
+  }
+
+  .hero-trust{
+    justify-content: center;
+    text-align: center;
+  }
+
+  .section-head{
+    align-items: center;
+    text-align: center;
+  }
+
+  .section-head p{
+    max-width: 70ch;
+  }
+
+  .card{
+    text-align: center;
+  }
+
+  .service .tag{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stat{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cta-inner{
+    text-align: center;
+  }
+
+  .cta-inner .actions{
+    justify-content: center;
+  }
+
+  .cta-inner .actions .btn{
+    width: min(360px, 100%);
+    min-height: 48px;
+  }
+
+  footer .foot{
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 @media (max-width: 520px){
