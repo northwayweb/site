@@ -299,10 +299,11 @@ footer .mini{color:rgba(75,85,104,0.78); font-weight:800;}
     gap:0.35rem 0.8rem;
     justify-items:center;
     text-align:center;
-    font-size:0.82rem;
+    font-size:0.78rem;
   }
 
-  .hero-trust span:last-child{grid-column:1 / -1;}
+  .hero-trust span:first-child{grid-column:1 / -1; white-space:nowrap;}
+  .hero-trust span:last-child{grid-column:auto;}
 
   .section-head{
     align-items: center;
