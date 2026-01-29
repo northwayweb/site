@@ -209,6 +209,70 @@ if (form) {
   });
 }
 
+function setupHeroRotator() {
+  const rotator = document.querySelector('.hero-rotator');
+  if (!rotator) return;
+
+  const raw = String(rotator.getAttribute('data-hero-images') || '');
+  const urls = raw
+    .split(',')
+    .map((s) => String(s || '').trim())
+    .filter(Boolean);
+
+  if (!urls.length) return;
+
+  const imgA = rotator.querySelector('.hero-rotator-img.is-a');
+  const imgB = rotator.querySelector('.hero-rotator-img.is-b');
+  if (!imgA || !imgB) return;
+
+  const panel = rotator.closest('.hero-panel');
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function preload(url) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve({ url, ok: true });
+      img.onerror = () => resolve({ url, ok: false });
+      img.src = url;
+    });
+  }
+
+  Promise.all(urls.map(preload)).then((results) => {
+    const available = results.filter((r) => r && r.ok).map((r) => r.url);
+    if (!available.length) return;
+
+    if (panel) panel.classList.add('has-hero-images');
+
+    let index = 0;
+    let active = imgA;
+    let next = imgB;
+
+    active.src = available[index];
+    active.classList.add('is-active');
+    next.classList.remove('is-active');
+
+    if (prefersReducedMotion || available.length < 2) return;
+
+    window.setInterval(() => {
+      index = (index + 1) % available.length;
+      const nextUrl = available[index];
+
+      next.onload = () => {
+        next.classList.add('is-active');
+        active.classList.remove('is-active');
+        const tmp = active;
+        active = next;
+        next = tmp;
+      };
+
+      next.src = nextUrl;
+    }, 5200);
+  });
+}
+
 function setupSiteNav() {
   const nav = document.getElementById('site-nav');
   if (!nav) return;
@@ -354,7 +418,7 @@ function centerRecaptchaMobile() {
 
 document.addEventListener('DOMContentLoaded', () => {
   setupSiteNav();
-  return;
+  setupHeroRotator();
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();

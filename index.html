@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://northwayweb.ca/" />
   <link rel="icon" type="image/png" href="/assets/northway-logo.png" />
   <link rel="apple-touch-icon" href="/assets/northway-logo.png" />
-  <link rel="stylesheet" href="css/styles.css?v=20260129-08" />
+  <link rel="stylesheet" href="css/styles.css?v=20260129-09" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -184,7 +184,12 @@
       </div>
 
       <div class="hero-panel" aria-hidden="true">
-        <div class="hero-mock">
+        <div class="hero-rotator" data-hero-images="/assets/hero-01.webp,/assets/hero-02.webp,/assets/hero-03.webp" aria-hidden="true">
+          <img class="hero-rotator-img is-a" alt="" decoding="async" loading="eager" />
+          <img class="hero-rotator-img is-b" alt="" decoding="async" loading="eager" />
+        </div>
+
+        <div class="hero-mock" aria-hidden="true">
           <div class="mock-top"></div>
           <div class="mock-body">
             <div class="mock-line long"></div>
@@ -740,6 +745,6 @@
 </footer>
 
 
-  <script src="js/main.js?v=20260129-07"></script>
+  <script src="js/main.js?v=20260129-09"></script>
 </body>
 </html>
