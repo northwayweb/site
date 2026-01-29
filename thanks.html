@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>Thank You | Northway Web</title>
-  <link rel="stylesheet" href="css/styles.css?v=20260128-21" />
+  <link rel="stylesheet" href="css/styles.css?v=20260128-22" />
 </head>
 <body class="thanks-page">
 
@@ -19,6 +20,7 @@
       <p class="supporting">
         Your message has been received. We will get back to you shortly.
       </p>
+      <p class="supporting" id="thanks-note" style="display:none;"></p>
       <div class="thanks-actions">
         <a href="/#contact" class="cta-primary">Send another message</a>
         <a href="/" class="cta-secondary">Back to home</a>
@@ -39,6 +41,53 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260128-7"></script>
+  <script>
+    (function () {
+      function safeRedirect(url) {
+        try {
+          window.location.assign(url);
+        } catch (e) {
+          window.location.href = url;
+        }
+      }
+
+      function init() {
+        var params = new URLSearchParams(window.location.search);
+        var submitted = params.get('submitted') === '1';
+        var note = document.getElementById('thanks-note');
+        var title = document.querySelector('.thanks-page h1');
+        var supporting = document.querySelector('.thanks-page .supporting');
+
+        if (!submitted) {
+          if (title) title.textContent = 'You’re in the right place';
+          if (supporting) supporting.textContent = 'Please use the contact form to send a message.';
+          if (note) {
+            note.style.display = 'block';
+            note.textContent = 'Redirecting you to the contact section…';
+          }
+          window.setTimeout(function () {
+            safeRedirect('/#contact');
+          }, 2200);
+          return;
+        }
+
+        if (note) {
+          note.style.display = 'block';
+          note.textContent = 'Redirecting you back in a few seconds…';
+        }
+        window.setTimeout(function () {
+          safeRedirect('/#contact');
+        }, 8000);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+
+  <script src="js/main.js?v=20260128-8"></script>
 </body>
 </html>
