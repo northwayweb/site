@@ -791,6 +791,17 @@ section:not(.contact) > .container > .section-intro {
   text-align: center;
  }
 
+ .demo-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+ }
+
+ .demo-card:visited {
+  color: inherit;
+ }
+
  .demo-card::before {
   content: "";
   position: absolute;
