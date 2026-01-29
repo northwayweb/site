@@ -1588,6 +1588,7 @@ footer.footer {
 @media (max-width: 600px) {
   .footer-location {
     font-size: 0.86rem;
+    white-space: normal;
   }
 }
 
