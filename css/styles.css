@@ -452,6 +452,20 @@ section:not(.contact) > .container > .section-intro {
   padding: 6.25rem 0 4.5rem;
 }
 
+.thanks-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.thanks-page .hero {
+  flex: 1 0 auto;
+}
+
+.thanks-page .footer {
+  margin-top: auto;
+}
+
 .thanks-page h1 {
   display: flex;
   align-items: center;
