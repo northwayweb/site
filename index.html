@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Northway Web – Building websites that help local businesses grow</title>
-  <link rel="stylesheet" href="css/styles.css?v=20260128-16" />
+  <link rel="stylesheet" href="css/styles.css?v=20260128-17" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -606,7 +606,6 @@
                 name="contact"
                 method="POST"
                 data-netlify="true"
-                data-netlify-recaptcha="true"
                 netlify-honeypot="bot-field"
                 id="contact-form"
               >
@@ -644,7 +643,13 @@
                 <div class="char-count" id="message-count" aria-live="polite">0/500</div>
 
                 <div class="contact-actions">
-                  <div class="netlify-recaptcha" data-netlify-recaptcha="true"></div>
+                  <div class="math-challenge" aria-label="Spam protection">
+                    <label for="math-answer" class="math-label">Quick question</label>
+                    <div class="math-row">
+                      <span class="math-question" id="math-question"></span>
+                      <input type="text" id="math-answer" name="math_answer" inputmode="numeric" autocomplete="off" required />
+                    </div>
+                  </div>
                   <button type="submit" class="cta-primary">Send Message</button>
                 </div>
 
@@ -689,6 +694,6 @@
 </footer>
 
 
-  <script src="js/main.js?v=20260128-2"></script>
+  <script src="js/main.js?v=20260128-3"></script>
 </body>
 </html>

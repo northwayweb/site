@@ -7,6 +7,21 @@ const messageField = document.getElementById('message');
 const messageCount = document.getElementById('message-count');
 const MAX_MESSAGE_CHARS = 500;
 
+let currentMathAnswer = null;
+
+function generateMathChallenge() {
+  const questionEl = document.getElementById('math-question');
+  const answerEl = document.getElementById('math-answer');
+
+  if (!questionEl || !answerEl) return;
+
+  const a = Math.floor(Math.random() * 9) + 1;
+  const b = Math.floor(Math.random() * 9) + 1;
+  currentMathAnswer = a + b;
+  questionEl.textContent = `${a} + ${b} =`;
+  answerEl.value = '';
+}
+
 function getFormValue(formEl, fieldName) {
   const field = formEl && formEl.elements ? formEl.elements.namedItem(fieldName) : null;
   if (!field) return '';
@@ -55,6 +70,19 @@ if (form) {
       return;
     }
 
+    const mathAnswerEl = document.getElementById('math-answer');
+    const mathAnswerRaw = getFormValue(form, 'math_answer');
+    const mathAnswer = Number.parseInt(mathAnswerRaw, 10);
+
+    if (Number.isNaN(mathAnswer) || currentMathAnswer === null || mathAnswer !== currentMathAnswer) {
+      e.preventDefault();
+      status.textContent = 'Please answer the quick question correctly.';
+      status.style.color = '#c00';
+      generateMathChallenge();
+      if (mathAnswerEl) mathAnswerEl.focus();
+      return;
+    }
+
     const isNetlifyForm = form.hasAttribute('data-netlify');
 
     if (isNetlifyForm) {
@@ -72,6 +100,8 @@ if (form) {
     updateMessageCount();
   });
 }
+
+generateMathChallenge();
 
 // ===============================
 // Scroll Reveal Animations

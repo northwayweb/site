@@ -340,17 +340,31 @@ section:not(.contact) > .container > .section-intro {
   gap: 0.85rem;
 }
 
-.contact-premium .contact-actions > * {
-  width: 304px;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+.contact-premium .contact-actions button[type="submit"] {
+  width: 100%;
+  display: block;
+  max-width: 420px;
 }
 
-.contact-premium .contact-actions button[type="submit"] {
-  width: 304px;
-  display: block;
-  max-width: 100%;
+.contact-premium .math-challenge {
+  width: 100%;
+  max-width: 420px;
+}
+
+.contact-premium .math-label {
+  margin-bottom: 0.4rem;
+}
+
+.contact-premium .math-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.contact-premium .math-question {
+  font-weight: 700;
+  color: var(--primary);
 }
 
 .contact-premium .contact-note {
