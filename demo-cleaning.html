@@ -18,14 +18,20 @@
           <span>North Shore Cleaning</span>
         </a>
 
-        <div class="nav-links" aria-label="Primary">
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a href="#faq">FAQ</a>
-        </div>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
 
-        <div class="nav-actions">
-          <a class="btn btn-primary" href="#book">Book a Clean</a>
+        <div class="nav-drawer" id="nav-menu">
+          <div class="nav-links" aria-label="Primary">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#faq">FAQ</a>
+          </div>
+
+          <div class="nav-actions">
+            <a class="btn btn-primary" href="#book">Book a Clean</a>
+          </div>
         </div>
       </div>
     </div>
@@ -189,6 +195,24 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const nav = document.querySelector('.nav');
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+
+    if (nav && toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   </script>
 </body>
 </html>

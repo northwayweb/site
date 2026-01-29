@@ -18,14 +18,20 @@
           <span>Riverside Plumbing</span>
         </a>
 
-        <div class="nav-links" aria-label="Primary">
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a href="#faq">FAQ</a>
-        </div>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
 
-        <div class="nav-actions">
-          <a class="btn btn-primary" href="tel:+15555550123">Call Now</a>
+        <div class="nav-drawer" id="nav-menu">
+          <div class="nav-links" aria-label="Primary">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#faq">FAQ</a>
+          </div>
+
+          <div class="nav-actions">
+            <a class="btn btn-primary" href="tel:+15555550123">Call Now</a>
+          </div>
         </div>
       </div>
     </div>
@@ -35,7 +41,7 @@
     <div class="container hero-grid">
       <div>
         <div class="kicker"><span class="dot" aria-hidden="true"></span>24/7 emergency plumber</div>
-        <h1>Fast plumbing help, done right.</h1>
+        <h1>Fast plumbing help, <span class="mobile-break">done right.</span></h1>
         <p>
           Upfront estimates, clean work, and reliable service for homes and small businesses.
           Same-day appointments available.
@@ -196,6 +202,24 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const nav = document.querySelector('.nav');
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+
+    if (nav && toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   </script>
 </body>
 </html>
