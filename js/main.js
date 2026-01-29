@@ -2,7 +2,7 @@
 // Contact Form (client-side feedback only)
 // ===============================
 const form = document.getElementById('contact-form');
-const status = document.getElementById('form-status');
+let status = document.getElementById('form-status');
 const messageField = document.getElementById('message');
 const messageCount = document.getElementById('message-count');
 const MAX_MESSAGE_CHARS = 500;
@@ -34,6 +34,17 @@ function updateMessageCount() {
   messageCount.textContent = `${current}/${MAX_MESSAGE_CHARS}`;
 }
 
+function getStatusEl() {
+  if (status) return status;
+  if (!form) return null;
+
+  status = document.createElement('div');
+  status.id = 'form-status';
+  status.setAttribute('aria-live', 'polite');
+  form.appendChild(status);
+  return status;
+}
+
 if (messageField && messageCount) {
   updateMessageCount();
   messageField.addEventListener('input', updateMessageCount);
@@ -41,9 +52,14 @@ if (messageField && messageCount) {
 
 if (form) {
   form.addEventListener('submit', function (e) {
-    status.textContent = '';
-    status.style.color = '';
-    status.className = '';
+    e.preventDefault();
+
+    const statusEl = getStatusEl();
+    if (statusEl) {
+      statusEl.textContent = '';
+      statusEl.style.color = '';
+      statusEl.className = '';
+    }
 
     const name = getFormValue(form, 'name');
     const business = getFormValue(form, 'business');
@@ -51,23 +67,26 @@ if (form) {
     const message = getFormValue(form, 'message');
 
     if (!name || !business || !email || !message) {
-      e.preventDefault();
-      status.textContent = 'Please fill in all fields.';
-      status.style.color = '#c00';
+      if (statusEl) {
+        statusEl.textContent = 'Please fill in all fields.';
+        statusEl.style.color = '#c00';
+      }
       return;
     }
 
     if (!/^\S+@\S+\.\S+$/.test(email)) {
-      e.preventDefault();
-      status.textContent = 'Please enter a valid email address.';
-      status.style.color = '#c00';
+      if (statusEl) {
+        statusEl.textContent = 'Please enter a valid email address.';
+        statusEl.style.color = '#c00';
+      }
       return;
     }
 
     if (message.length > MAX_MESSAGE_CHARS) {
-      e.preventDefault();
-      status.textContent = `Message must be ${MAX_MESSAGE_CHARS} characters or less.`;
-      status.style.color = '#c00';
+      if (statusEl) {
+        statusEl.textContent = `Message must be ${MAX_MESSAGE_CHARS} characters or less.`;
+        statusEl.style.color = '#c00';
+      }
       return;
     }
 
@@ -76,9 +95,10 @@ if (form) {
     const mathAnswer = Number.parseInt(mathAnswerRaw, 10);
 
     if (Number.isNaN(mathAnswer) || currentMathAnswer === null || mathAnswer !== currentMathAnswer) {
-      e.preventDefault();
-      status.textContent = 'Please answer the quick question correctly.';
-      status.style.color = '#c00';
+      if (statusEl) {
+        statusEl.textContent = 'Please answer the quick question correctly.';
+        statusEl.style.color = '#c00';
+      }
       generateMathChallenge();
       if (mathAnswerEl) mathAnswerEl.focus();
       return;
@@ -87,11 +107,11 @@ if (form) {
     const isNetlifyForm = form.hasAttribute('data-netlify');
 
     if (isNetlifyForm) {
-      e.preventDefault();
-
-      status.textContent = 'Submitting…';
-      status.style.color = '#18405a';
-      status.className = 'form-status form-status--submitting';
+      if (statusEl) {
+        statusEl.textContent = 'Submitting…';
+        statusEl.style.color = '#18405a';
+        statusEl.className = 'form-status form-status--submitting';
+      }
 
       const formData = new FormData(form);
       const body = new URLSearchParams();
@@ -99,7 +119,9 @@ if (form) {
         body.append(key, String(value));
       }
 
-      fetch('/', {
+      const action = form.getAttribute('action') || '/';
+
+      fetch(action, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -109,31 +131,36 @@ if (form) {
         .then((res) => {
           if (!res.ok) throw new Error('Submission failed');
 
-          status.className = 'form-status form-status--success';
-          status.innerHTML =
-            '<div class="form-success" role="status">' +
-            '<div class="form-success__title">Thank you! <span class="form-flower" aria-hidden="true">🌸</span></div>' +
-            '<div class="form-success__text">Your message has been received. We will get back to you shortly.</div>' +
-            '</div>';
+          if (statusEl) {
+            statusEl.className = 'form-status form-status--success';
+            statusEl.innerHTML =
+              '<div class="form-success" role="status">' +
+              '<div class="form-success__title">Thank you! <span class="form-flower" aria-hidden="true">🌸</span></div>' +
+              '<div class="form-success__text">Your message has been received. We will get back to you shortly.</div>' +
+              '</div>';
+          }
 
           form.reset();
           updateMessageCount();
           generateMathChallenge();
         })
         .catch(() => {
-          status.className = 'form-status form-status--error';
-          status.textContent =
-            'Something went wrong while submitting. Please try again or email support@northwayweb.ca.';
-          status.style.color = '#c00';
+          if (statusEl) {
+            statusEl.className = 'form-status form-status--error';
+            statusEl.textContent =
+              'Something went wrong while submitting. Please try again or email support@northwayweb.ca.';
+            statusEl.style.color = '#c00';
+          }
         });
 
       return;
     }
 
-    e.preventDefault();
-    status.textContent =
-      'Thank you! Your message has been received. We will get back to you shortly.';
-    status.style.color = '#18405a';
+    if (statusEl) {
+      statusEl.textContent =
+        'Thank you! Your message has been received. We will get back to you shortly.';
+      statusEl.style.color = '#18405a';
+    }
 
     form.reset();
     updateMessageCount();

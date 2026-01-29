@@ -301,13 +301,17 @@ section:not(.contact) > .container > .section-intro {
   border-radius: 22px;
   box-shadow: 0 22px 70px rgba(15,47,68,0.10);
   padding: 1.25rem;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact-premium .contact-layout {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
+  grid-template-columns: 1fr;
   gap: 1.25rem;
   align-items: start;
+  justify-items: center;
 }
 
 .contact-premium .contact-form-wrap {
@@ -316,6 +320,8 @@ section:not(.contact) > .container > .section-intro {
   border-radius: 18px;
   box-shadow: var(--shadow-sm);
   padding: 1.35rem;
+  width: 100%;
+  max-width: 720px;
 }
 
 .contact-premium .form-grid {
@@ -357,9 +363,13 @@ section:not(.contact) > .container > .section-intro {
 
 .contact-premium .math-row {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 130px;
   gap: 0.75rem;
   align-items: center;
+}
+
+.contact-premium #math-answer {
+  width: 100%;
 }
 
 .contact-premium .math-question {
@@ -495,7 +505,8 @@ section:not(.contact) > .container > .section-intro {
 @media (max-width: 600px) {
   .contact-premium .contact-surface {
     padding: 1rem;
-    margin-right: 0.9rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .contact-premium .contact-form-wrap,
@@ -505,6 +516,10 @@ section:not(.contact) > .container > .section-intro {
 
   .contact-premium .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-premium .math-row {
+    grid-template-columns: auto 110px;
   }
 }
 
