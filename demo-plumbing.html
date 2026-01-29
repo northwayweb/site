@@ -4,150 +4,180 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Plumbing Website Demo | Northway Web</title>
+  <title>Riverside Plumbing | 24/7 Emergency Plumber</title>
   <link rel="canonical" href="https://northwayweb.ca/demo-plumbing.html" />
-  <link rel="stylesheet" href="css/styles.css?v=20260129-03" />
+  <link rel="stylesheet" href="css/demo-plumbing.css?v=20260129-04" />
 </head>
 <body>
 
-  <header class="hero" id="hero">
-    <nav class="top-nav">
-      <a href="/" class="brand-logo">Northway Web</a>
-      <div class="nav-actions">
-        <a href="/#contact" class="nav-btn">Get a site like this</a>
-      </div>
-    </nav>
-
+  <div class="topbar">
     <div class="container">
-      <h1>Riverside Plumbing</h1>
-      <p class="supporting">
-        Fast, reliable plumbing service. Upfront pricing. Same-day appointments.
-      </p>
-      <div class="cta-group">
-        <a href="tel:+15555550123" class="cta-primary">Call (555) 555‑0123</a>
-        <a href="#quote" class="cta-secondary">Request a Quote</a>
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Riverside Plumbing">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Riverside Plumbing</span>
+        </a>
+
+        <div class="nav-links" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="nav-actions">
+          <a class="btn btn-primary" href="tel:+15555550123">Call Now</a>
+        </div>
       </div>
-      <div class="hero-trust">
-        <span>✓ Licensed & insured</span>
-        <span>✓ Emergency service</span>
-        <span>✓ Trusted locally</span>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <div class="kicker"><span class="dot" aria-hidden="true"></span>24/7 emergency plumber</div>
+        <h1>Fast plumbing help, done right.</h1>
+        <p>
+          Upfront estimates, clean work, and reliable service for homes and small businesses.
+          Same-day appointments available.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:+15555550123">Call (555) 555‑0123</a>
+          <a class="btn" href="#quote">Request service</a>
+        </div>
+
+        <div class="hero-trust">
+          <span>✓ Licensed & insured</span>
+          <span>✓ Upfront pricing</span>
+          <span>✓ Emergency service</span>
+        </div>
+      </div>
+
+      <div class="hero-panel" aria-label="Highlights">
+        <div class="badge-stack" aria-hidden="true">
+          <div class="badge">
+            <strong>Drain & sewer</strong>
+            <span>Clogs cleared fast</span>
+          </div>
+          <div class="badge">
+            <strong>Leak repair</strong>
+            <span>Stop damage early</span>
+          </div>
+          <div class="badge">
+            <strong>Water heaters</strong>
+            <span>Install & service</span>
+          </div>
+          <div class="badge">
+            <strong>Emergency</strong>
+            <span>24/7 availability</span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
 
-    <section class="what-we-do reveal" id="services">
+    <section id="services">
       <div class="container">
-        <h2>Plumbing Services</h2>
-        <p class="section-intro wide">
-          Clear services, strong trust signals, and simple calls-to-action that convert visitors into calls.
-        </p>
+        <div class="section-head">
+          <h2>Plumbing Services</h2>
+          <p>Clear services and strong trust signals — built to convert visitors into calls.</p>
+        </div>
 
-        <div class="services">
-          <article class="service-card">
-            <div class="service-icon" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3bb3bd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8 3v3a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4V3"></path>
-                <path d="M12 10v11"></path>
-                <path d="M7 21h10"></path>
-              </svg>
-            </div>
+        <div class="grid">
+          <div class="card service">
             <h3>Drain Cleaning</h3>
-            <p>Clogs cleared fast with clean work and minimal disruption.</p>
-          </article>
+            <p>Kitchen, bathroom, and mainline clogs cleared quickly with minimal mess.</p>
+            <span class="tag">Same-day</span>
+          </div>
 
-          <article class="service-card">
-            <div class="service-icon" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3bb3bd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2l9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9l9-7z"></path>
-                <path d="M9 22V12h6v10"></path>
-              </svg>
-            </div>
+          <div class="card service">
             <h3>Leak Repairs</h3>
-            <p>Stop leaks at the source and protect your home from damage.</p>
-          </article>
+            <p>Pinpoint and repair leaks to protect your home from water damage.</p>
+            <span class="tag">Upfront estimate</span>
+          </div>
 
-          <article class="service-card">
-            <div class="service-icon" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3bb3bd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 12h18"></path>
-                <path d="M12 3v18"></path>
-                <path d="M7 7l10 10"></path>
-                <path d="M17 7L7 17"></path>
-              </svg>
-            </div>
+          <div class="card service">
             <h3>Water Heaters</h3>
-            <p>Installations and repairs for reliable hot water year-round.</p>
-          </article>
+            <p>Repair, replacement, and installation for reliable hot water year-round.</p>
+            <span class="tag">Warranty options</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="how-it-works reveal" id="process">
-      <div class="container two-col">
-        <div>
-          <h2>How It Works</h2>
-          <p class="section-intro">
-            A simple process designed to get you booked quickly.
-          </p>
-          <ol class="steps">
-            <li><strong>Step 1:</strong> <span class="step-text">Tell us what’s going on</span></li>
-            <li><strong>Step 2:</strong> <span class="step-text">We provide a clear estimate</span></li>
-            <li><strong>Step 3:</strong> <span class="step-text">A technician arrives on time</span></li>
-          </ol>
-        </div>
-        <div class="trust-panel">
-          <h3>Why customers choose us</h3>
-          <ul>
-            <li>Upfront pricing</li>
-            <li>Clean, respectful work</li>
-            <li>Emergency availability</li>
-            <li>Warranty-backed repairs</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact contact-premium reveal" id="quote">
+    <section id="about">
       <div class="container">
-        <div class="contact-header">
-          <h2>Request a Quote</h2>
-          <p class="section-intro">
-            This is a demo page. For your own website, your form would send inquiries directly to you.
-          </p>
+        <div class="section-head">
+          <h2>About Riverside Plumbing</h2>
+          <p>Professional service with clear communication and clean workmanship.</p>
         </div>
 
-        <div class="contact-surface">
-          <div class="contact-layout">
-            <div class="contact-form-wrap">
-              <form>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" autocomplete="name" />
-                  </div>
+        <div class="grid">
+          <div class="card about">
+            <p>
+              Riverside Plumbing is a local plumbing team focused on fast response times and reliable repairs.
+              From small leaks to bigger emergencies, we keep the process straightforward: assess the issue,
+              provide an upfront estimate, and get the job done cleanly.
+            </p>
+            <p>
+              This is a demo website. A real client site would include service areas, customer reviews, and a
+              lead form that routes directly to the business.
+            </p>
+          </div>
 
-                  <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone" autocomplete="tel" />
-                  </div>
+          <div class="stats">
+            <div class="stat"><strong>24/7</strong><span>Emergency help</span></div>
+            <div class="stat"><strong>60min</strong><span>Typical arrival window</span></div>
+            <div class="stat"><strong>100%</strong><span>Upfront estimates</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                  <div class="form-group form-group--full">
-                    <label for="message">What do you need help with?</label>
-                    <textarea id="message" name="message" rows="5"></textarea>
-                  </div>
-                </div>
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Short answers to common questions that help visitors call with confidence.</p>
+        </div>
 
-                <div class="contact-actions">
-                  <a class="cta-primary" href="/#contact">Build a website like this</a>
-                </div>
+        <div class="faq">
+          <details>
+            <summary>Do you offer emergency plumbing?</summary>
+            <p>Yes. We offer 24/7 emergency response for urgent leaks, backups, and no-hot-water situations.</p>
+          </details>
 
-                <small class="contact-note">
-                  Demo only. This form does not submit.
-                </small>
-              </form>
-            </div>
+          <details>
+            <summary>Do you provide upfront pricing?</summary>
+            <p>We provide a clear estimate before work begins, so there are no surprises.</p>
+          </details>
+
+          <details>
+            <summary>Can you help with water heater replacement?</summary>
+            <p>Yes. We can diagnose, repair, or replace water heaters and help you choose the right size.</p>
+          </details>
+
+          <details>
+            <summary>How quickly can you arrive?</summary>
+            <p>Availability varies by day, but we often offer same-day appointments and emergency dispatch.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" id="quote">
+      <div class="container">
+        <div class="cta-inner">
+          <div>
+            <h2>Need a plumber today?</h2>
+            <p>This is a demo website. Your real website would send quote requests directly to your inbox.</p>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="/#contact">Build a website like this</a>
+            <a class="btn" href="/">Back to Northway Web</a>
           </div>
         </div>
       </div>
@@ -155,19 +185,17 @@
 
   </main>
 
-  <footer class="footer" id="footer">
-  <div class="container">
-    <div class="footer-brand">Northway Web</div>
-    <div class="footer-tagline">
-      Building websites that help local businesses grow
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>© <span id="year"></span> Riverside Plumbing</div>
+        <div class="mini">Demo website for preview purposes</div>
+      </div>
     </div>
-    <div class="footer-contact">Email: support@northwayweb.ca</div>
-    <div class="footer-location">
-      © <span id="year"></span> Northway Web. All rights reserved.
-    </div>
-  </div>
-</footer>
+  </footer>
 
-  <script src="js/main.js?v=20260128-12"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
