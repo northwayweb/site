@@ -18,7 +18,10 @@ body{
   margin:0;
   font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   color:var(--text);
-  background:radial-gradient(900px 520px at 14% 0%, rgba(249,115,22,0.18), transparent 62%),
+  background:radial-gradient(460px 620px at 10% 18%, rgba(56,189,248,0.14), transparent 66%),
+             radial-gradient(380px 520px at 86% 44%, rgba(125,211,252,0.10), transparent 70%),
+             radial-gradient(420px 560px at 18% 92%, rgba(255,255,255,0.07), transparent 72%),
+             radial-gradient(900px 520px at 14% 0%, rgba(249,115,22,0.18), transparent 62%),
              radial-gradient(900px 520px at 88% 18%, rgba(34,197,94,0.12), transparent 64%),
              var(--bg);
   line-height:1.55;
@@ -29,6 +32,26 @@ body{
 
 a{color:inherit; text-decoration:none;}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid rgba(249,115,22,0.38); outline-offset:2px; border-radius:12px;}
+
+.water-drop{
+  position:fixed;
+  width:540px;
+  height:680px;
+  border-radius:52% 48% 54% 46% / 64% 60% 40% 36%;
+  background:
+    radial-gradient(220px 220px at 35% 28%, rgba(255,255,255,0.14), transparent 62%),
+    radial-gradient(420px 520px at 50% 55%, rgba(56,189,248,0.10), transparent 70%),
+    radial-gradient(520px 520px at 72% 78%, rgba(125,211,252,0.07), transparent 72%);
+  filter: blur(0.2px);
+  opacity:0.55;
+  mix-blend-mode:screen;
+  pointer-events:none;
+  z-index:0;
+}
+
+.water-drop.drop-1{left:-220px; top:140px; transform:rotate(10deg);}
+.water-drop.drop-2{right:-240px; top:520px; transform:rotate(-12deg); width:620px; height:760px; opacity:0.45;}
+.water-drop.drop-3{left:-180px; bottom:-260px; transform:rotate(18deg); width:660px; height:820px; opacity:0.35;}
 
 .container{width:min(var(--container),calc(100% - 2.2rem)); margin:0 auto;}
 
@@ -85,12 +108,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid rgb
 
 .hero-panel{
   position:relative;
+  isolation:isolate;
   border-radius:calc(var(--radius) + 10px);
   border:1px solid rgba(255,255,255,0.12);
   background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
   box-shadow:var(--shadow);
   overflow:hidden;
-  min-height:460px;
+  aspect-ratio:16 / 10;
 }
 
 .hero-panel::before{
@@ -101,6 +125,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid rgb
              radial-gradient(420px 260px at 78% 74%, rgba(34,197,94,0.14), transparent 64%),
              linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0.00));
   transform:rotate(-6deg);
+  z-index:0;
 }
 
 .hero-panel::after{
@@ -109,6 +134,42 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid rgb
   inset:0;
   background:radial-gradient(640px 320px at 50% 0%, rgba(255,255,255,0.10), transparent 62%),
              linear-gradient(180deg, rgba(7,24,36,0.15), rgba(7,24,36,0.92));
+  z-index:0;
+  pointer-events:none;
+}
+
+.hero-rotator{
+  position:absolute;
+  inset:4%;
+  border-radius:calc(var(--radius) + 6px);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.12);
+  z-index:1;
+  background:rgba(0,0,0,0.16);
+}
+
+.hero-rotator::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(520px 240px at 20% 20%, rgba(249,115,22,0.16), transparent 60%),
+             radial-gradient(520px 240px at 80% 70%, rgba(34,197,94,0.12), transparent 60%);
+  pointer-events:none;
+  opacity:0.65;
+}
+
+.hero-rotator-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 900ms ease;
+}
+
+.hero-rotator-img.is-active{
+  opacity:1;
 }
 
 .badge-stack{
@@ -206,7 +267,6 @@ footer .mini{color:rgba(255,255,255,0.58); font-weight:800;}
 @media (max-width: 900px){
   .hero-grid{grid-template-columns:1fr;}
   .hero{padding-top:3.4rem;}
-  .hero-panel{min-height:380px;}
   .service{grid-column:span 12;}
   .about{grid-column:span 12;}
   .stats{grid-column:span 12; grid-template-columns:repeat(2,1fr);}
@@ -310,5 +370,6 @@ footer .mini{color:rgba(255,255,255,0.58); font-weight:800;}
   .card{animation:none; transition:none;}
   details{transition:none;}
   .stat{transition:none;}
+  .hero-rotator-img{transition:none;}
   .nav-toggle-bars,.nav-toggle-bars::before,.nav-toggle-bars::after{transition:none;}
 }
