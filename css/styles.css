@@ -757,7 +757,7 @@ textarea {
   max-width: 100%;
   display: inline-block;
   flex: 0 0 auto;
-  transform: scale(0.88);
+  transform: none;
   transform-origin: 50% 0;
 }
 
@@ -804,6 +804,11 @@ textarea {
 }
 
 @media (min-width: 601px) {
+  .contact form .netlify-recaptcha > * {
+    transform: scale(0.88);
+    transform-origin: 50% 0;
+  }
+
   .contact button[type="submit"] {
     display: block;
     max-width: 420px;
@@ -827,16 +832,17 @@ textarea {
 
   .contact form .netlify-recaptcha {
     overflow: visible;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    width: 100%;
+    max-width: 304px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .contact form .netlify-recaptcha > * {
     width: 100%;
     max-width: 100%;
-    display: flex;
-    justify-content: center;
+    display: block;
     margin-left: 0;
     margin-right: 0;
     transform: none;
@@ -844,16 +850,15 @@ textarea {
 
   .contact form .netlify-recaptcha .g-recaptcha,
   .contact form .netlify-recaptcha iframe {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-
-  .contact form .netlify-recaptcha .g-recaptcha,
-  .contact form .netlify-recaptcha iframe {
-    position: relative;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
   }
 
   .contact small {

@@ -188,4 +188,48 @@ if (faqAccordion) {
   });
 }
 
+function centerRecaptchaMobile() {
+  const isMobile = window.matchMedia && window.matchMedia('(max-width: 600px)').matches;
+  const formEl = document.getElementById('contact-form');
+  if (!formEl) return;
+
+  const container = formEl.querySelector('.netlify-recaptcha');
+  if (!container) return;
+
+  if (!isMobile) {
+    container.style.transform = '';
+    return;
+  }
+
+  const iframe = container.querySelector('iframe');
+  if (!iframe) return;
+
+  const formRect = formEl.getBoundingClientRect();
+  const iframeRect = iframe.getBoundingClientRect();
+  if (!formRect.width || !iframeRect.width) return;
+
+  const targetCenterX = formRect.left + formRect.width / 2;
+  const currentCenterX = iframeRect.left + iframeRect.width / 2;
+  const delta = targetCenterX - currentCenterX;
+
+  container.style.transform = `translateX(${Math.round(delta)}px)`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  centerRecaptchaMobile();
+
+  const formEl = document.getElementById('contact-form');
+  if (!formEl) return;
+
+  const container = formEl.querySelector('.netlify-recaptcha');
+  if (!container) return;
+
+  const mo = new MutationObserver(() => {
+    centerRecaptchaMobile();
+  });
+
+  mo.observe(container, { childList: true, subtree: true });
+  window.addEventListener('resize', () => centerRecaptchaMobile(), { passive: true });
+});
+
 document.getElementById('year').textContent = new Date().getFullYear();
