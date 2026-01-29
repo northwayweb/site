@@ -1424,7 +1424,12 @@ textarea:focus-visible {
     border-radius: 18px;
   }
   .testimonial-card blockquote {
-    font-size: 1.02rem;
+    font-size: 0.95rem;
+    display: block !important;
+    line-clamp: unset !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important;
   }
 }
 
