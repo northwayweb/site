@@ -52,8 +52,6 @@ if (messageField && messageCount) {
 
 if (form) {
   form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
     const statusEl = getStatusEl();
     if (statusEl) {
       statusEl.textContent = '';
@@ -67,6 +65,7 @@ if (form) {
     const message = getFormValue(form, 'message');
 
     if (!name || !business || !email || !message) {
+      e.preventDefault();
       if (statusEl) {
         statusEl.textContent = 'Please fill in all fields.';
         statusEl.style.color = '#c00';
@@ -75,6 +74,7 @@ if (form) {
     }
 
     if (!/^\S+@\S+\.\S+$/.test(email)) {
+      e.preventDefault();
       if (statusEl) {
         statusEl.textContent = 'Please enter a valid email address.';
         statusEl.style.color = '#c00';
@@ -83,6 +83,7 @@ if (form) {
     }
 
     if (message.length > MAX_MESSAGE_CHARS) {
+      e.preventDefault();
       if (statusEl) {
         statusEl.textContent = `Message must be ${MAX_MESSAGE_CHARS} characters or less.`;
         statusEl.style.color = '#c00';
@@ -95,6 +96,7 @@ if (form) {
     const mathAnswer = Number.parseInt(mathAnswerRaw, 10);
 
     if (Number.isNaN(mathAnswer) || currentMathAnswer === null || mathAnswer !== currentMathAnswer) {
+      e.preventDefault();
       if (statusEl) {
         statusEl.textContent = 'Please answer the quick question correctly.';
         statusEl.style.color = '#c00';
@@ -103,67 +105,6 @@ if (form) {
       if (mathAnswerEl) mathAnswerEl.focus();
       return;
     }
-
-    const isNetlifyForm = form.hasAttribute('data-netlify');
-
-    if (isNetlifyForm) {
-      if (statusEl) {
-        statusEl.textContent = 'Submitting…';
-        statusEl.style.color = '#18405a';
-        statusEl.className = 'form-status form-status--submitting';
-      }
-
-      const formData = new FormData(form);
-      const body = new URLSearchParams();
-      for (const [key, value] of formData.entries()) {
-        body.append(key, String(value));
-      }
-
-      const action = form.getAttribute('action') || '/';
-
-      fetch(action, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: body.toString(),
-      })
-        .then((res) => {
-          if (!res.ok) throw new Error('Submission failed');
-
-          if (statusEl) {
-            statusEl.className = 'form-status form-status--success';
-            statusEl.innerHTML =
-              '<div class="form-success" role="status">' +
-              '<div class="form-success__title">Thank you! <span class="form-flower" aria-hidden="true">🌸</span></div>' +
-              '<div class="form-success__text">Your message has been received. We will get back to you shortly.</div>' +
-              '</div>';
-          }
-
-          form.reset();
-          updateMessageCount();
-          generateMathChallenge();
-        })
-        .catch(() => {
-          if (statusEl) {
-            statusEl.className = 'form-status form-status--error';
-            statusEl.textContent =
-              'Something went wrong while submitting. Please try again or email support@northwayweb.ca.';
-            statusEl.style.color = '#c00';
-          }
-        });
-
-      return;
-    }
-
-    if (statusEl) {
-      statusEl.textContent =
-        'Thank you! Your message has been received. We will get back to you shortly.';
-      statusEl.style.color = '#18405a';
-    }
-
-    form.reset();
-    updateMessageCount();
   });
 }
 
