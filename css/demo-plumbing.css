@@ -55,6 +55,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid rgb
 
 .container{width:min(var(--container),calc(100% - 2.2rem)); margin:0 auto;}
 
+@media (min-width: 901px){
+  .topbar .container{width:calc(100% - 2.2rem);}
+}
+
 .topbar{
   position:sticky;
   top:0;

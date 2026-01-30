@@ -69,6 +69,12 @@ body {
   padding: 0 1.5rem;
 }
 
+@media (min-width: 901px) {
+  .topbar .container {
+    max-width: none;
+  }
+}
+
 /* ===============================
    HERO
    =============================== */
