@@ -340,16 +340,43 @@ body {
   color: var(--text);
   text-decoration: none;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   white-space: nowrap;
-  padding: 0.35rem 0.55rem;
+  padding: 0.2rem 0;
   border-radius: 12px;
-  background: rgba(255,255,255,0.70);
-  border: 1px solid rgba(15,23,42,0.12);
+  background: transparent;
+  border: 0;
   line-height: 1.1;
   display: inline-flex;
   align-items: center;
+  justify-self: start;
+  align-self: center;
   gap: 0.55rem;
+}
+
+.brand-wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.38rem;
+  font-size: 1.06rem;
+  font-weight: 850;
+  letter-spacing: -0.04em;
+}
+
+.brand-wordmark .wm-accent {
+  background: linear-gradient(90deg, var(--accent), rgba(var(--accent2-rgb), 1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-wordmark .wm-dot {
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), rgba(var(--accent2-rgb), 1));
+  transform: translateY(-0.08em);
 }
 
 .brand-logo-img {
@@ -397,7 +424,11 @@ body {
 
   .brand-logo {
     font-size: 0.98rem;
-    padding: 0.3rem 0.5rem;
+    padding: 0.2rem 0;
+  }
+
+  .brand-wordmark {
+    font-size: 1.02rem;
   }
 
   .brand-logo-img {
