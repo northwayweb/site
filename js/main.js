@@ -121,47 +121,49 @@ function setupCurrentNavGlow() {
     return;
   }
 
-  const ratios = new Map();
+  function getActiveSectionLink() {
+    const targetY = window.innerHeight * 0.28;
+    let best = null;
+    let bestDist = Number.POSITIVE_INFINITY;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const id = entry && entry.target ? entry.target.id : '';
-        if (!id) return;
-        ratios.set(id, entry.isIntersecting ? entry.intersectionRatio : 0);
-      });
+    sectionLinks.forEach((item) => {
+      const rect = item.el.getBoundingClientRect();
+      const visible = rect.bottom > 0 && rect.top < window.innerHeight;
+      if (!visible) return;
 
-      if (applyTopRule()) return;
-
-      let best = null;
-      let bestRatio = 0;
-
-      sectionLinks.forEach((item) => {
-        const r = ratios.get(item.id) || 0;
-        if (r > bestRatio) {
-          bestRatio = r;
-          best = item;
-        }
-      });
-
-      if (best && bestRatio > 0) {
-        setActiveLink(best.link);
-      } else {
-        applyFallbackRule();
+      const dist = Math.abs(rect.top - targetY);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = item;
       }
-    },
-    {
-      threshold: [0.18, 0.28, 0.38, 0.5, 0.62],
-      rootMargin: '-20% 0px -55% 0px',
+    });
+
+    return best ? best.link : null;
+  }
+
+  let ticking = false;
+  function update() {
+    if (applyTopRule()) return;
+    const link = getActiveSectionLink();
+    if (link) {
+      setActiveLink(link);
+    } else {
+      applyFallbackRule();
     }
-  );
+  }
 
-  sectionLinks.forEach((item) => observer.observe(item.el));
+  function onScrollOrResize() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      ticking = false;
+      update();
+    });
+  }
 
-  applyTopRule();
-  window.addEventListener('scroll', () => {
-    if (window.scrollY < 140) setCurrentBrand();
-  }, { passive: true });
+  window.addEventListener('scroll', onScrollOrResize, { passive: true });
+  window.addEventListener('resize', onScrollOrResize);
+  update();
 }
 
 function restoreContactDraft() {
