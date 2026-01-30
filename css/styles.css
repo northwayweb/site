@@ -805,6 +805,18 @@ section:not(.contact) > .container > .section-intro {
   }
 }
 
+@keyframes smilePop {
+  0% {
+    transform: scale(0.6) rotate(-12deg);
+  }
+  60% {
+    transform: scale(1.18) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
 .thanks-page .hero {
   padding: 6.25rem 0 4.5rem;
 }
@@ -823,6 +835,11 @@ section:not(.contact) > .container > .section-intro {
   margin-top: auto;
 }
 
+.thanks-page .top-nav {
+  display: flex;
+  justify-content: center;
+}
+
 .thanks-page h1 {
   display: flex;
   align-items: center;
@@ -830,10 +847,10 @@ section:not(.contact) > .container > .section-intro {
   gap: 0.55rem;
 }
 
-.thanks-page .thanks-flower {
+.thanks-page .thanks-emoji {
   display: inline-block;
   transform-origin: 50% 70%;
-  animation: flowerPop 700ms cubic-bezier(.2,.9,.2,1) both;
+  animation: smilePop 900ms cubic-bezier(.2,.9,.2,1) both;
 }
 
 .thanks-page .thanks-actions {
