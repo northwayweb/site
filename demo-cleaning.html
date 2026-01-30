@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://northwayweb.ca/demo-cleaning.html" />
   <link rel="icon" type="image/png" href="/assets/northway-logo.png" />
   <link rel="apple-touch-icon" href="/assets/northway-logo.png" />
-  <link rel="stylesheet" href="css/demo-cleaning.css?v=20260129-07" />
+  <link rel="stylesheet" href="css/demo-cleaning.css?v=20260129-08" />
 </head>
 <body>
 
@@ -61,10 +61,9 @@
       </div>
 
       <div class="hero-media" aria-label="Cleaning gallery">
-        <div class="hero-bg" aria-hidden="true">
-          <div class="tile a"></div>
-          <div class="tile b"></div>
-          <div class="tile c"></div>
+        <div class="hero-rotator" data-hero-images="/assets/hero-cleaning-01.webp,/assets/hero-cleaning-02.webp" aria-hidden="true">
+          <img class="hero-rotator-img is-a" alt="" decoding="async" loading="eager" />
+          <img class="hero-rotator-img is-b" alt="" decoding="async" loading="eager" />
         </div>
 
         <div class="hero-overlay">
@@ -198,6 +197,60 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    function setupHeroRotator() {
+      const rotator = document.querySelector('.hero-rotator');
+      if (!rotator) return;
+
+      const raw = rotator.getAttribute('data-hero-images') || '';
+      const images = raw.split(',').map((s) => s.trim()).filter(Boolean);
+      if (images.length === 0) return;
+
+      const imgA = rotator.querySelector('.hero-rotator-img.is-a');
+      const imgB = rotator.querySelector('.hero-rotator-img.is-b');
+      if (!imgA || !imgB) return;
+
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      let index = 0;
+      let active = imgA;
+      let inactive = imgB;
+
+      function setSrc(img, src) {
+        if (img.getAttribute('src') === src) return;
+        img.src = src;
+      }
+
+      function preload(src) {
+        return new Promise((resolve) => {
+          const im = new Image();
+          im.onload = resolve;
+          im.onerror = resolve;
+          im.src = src;
+        });
+      }
+
+      setSrc(active, images[0]);
+      active.classList.add('is-active');
+      inactive.classList.remove('is-active');
+
+      if (prefersReduced || images.length < 2) return;
+
+      Promise.all(images.map(preload)).catch(() => {});
+
+      window.setInterval(() => {
+        index = (index + 1) % images.length;
+        const next = images[index];
+
+        setSrc(inactive, next);
+        inactive.classList.add('is-active');
+        active.classList.remove('is-active');
+
+        const temp = active;
+        active = inactive;
+        inactive = temp;
+      }, 5200);
+    }
+
     const nav = document.querySelector('.nav');
     const toggle = document.querySelector('.nav-toggle');
     const menu = document.getElementById('nav-menu');
@@ -215,6 +268,8 @@
         });
       });
     }
+
+    setupHeroRotator();
   </script>
 </body>
 </html>
