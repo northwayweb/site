@@ -359,6 +359,9 @@ footer .mini{color:rgba(75,85,104,0.78); font-weight:800;}
   .hero-actions .btn{
     width: min(360px, 100%);
     min-height: 48px;
+    flex: 0 0 auto;
+    padding: 0.9rem 1.9rem;
+    line-height: 1.1;
   }
 
   .hero-trust{
@@ -410,6 +413,9 @@ footer .mini{color:rgba(75,85,104,0.78); font-weight:800;}
   .cta-inner .actions .btn{
     width: min(360px, 100%);
     min-height: 48px;
+    flex: 0 0 auto;
+    padding: 0.9rem 1.9rem;
+    line-height: 1.1;
   }
 
   footer .foot{
