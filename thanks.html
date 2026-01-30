@@ -57,59 +57,6 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      function safeRedirect(url) {
-        try {
-          window.location.assign(url);
-        } catch (e) {
-          window.location.href = url;
-        }
-      }
-
-      function init() {
-        var params = new URLSearchParams(window.location.search);
-        var submitted = params.get('submitted') === '1';
-        var note = document.getElementById('thanks-note');
-        var title = document.querySelector('.thanks-page h1');
-        var supporting = document.querySelector('.thanks-page .supporting');
-
-        if (!submitted) {
-          if (title) title.textContent = 'You’re in the right place';
-          if (supporting) supporting.textContent = 'Please use the contact form to send a message.';
-          if (note) {
-            note.style.display = 'block';
-            note.textContent = 'Redirecting you to the contact section…';
-          }
-          window.setTimeout(function () {
-            safeRedirect('/#contact');
-          }, 2200);
-          return;
-        }
-
-        try {
-          sessionStorage.removeItem('nw_contact_draft_v1');
-        } catch (e) {
-          // ignore
-        }
-
-        if (note) {
-          note.style.display = 'block';
-          note.textContent = 'Redirecting you back in a few seconds…';
-        }
-        window.setTimeout(function () {
-          safeRedirect('/');
-        }, 8000);
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-    })();
-  </script>
-
-  <script src="js/main.js?v=20260129-09"></script>
+  <script src="js/main.js?v=20260130-02"></script>
 </body>
 </html>

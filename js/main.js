@@ -294,6 +294,78 @@ function setupSiteNav() {
   });
 }
 
+function setupDemoNav() {
+  const nav = document.querySelector('.nav');
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  if (!nav || !toggle || !menu) return;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+function setupThanksPage() {
+  if (!document.body || !document.body.classList.contains('thanks-page')) return;
+
+  function safeRedirect(url) {
+    try {
+      window.location.assign(url);
+    } catch (e) {
+      window.location.href = url;
+    }
+  }
+
+  function init() {
+    const params = new URLSearchParams(window.location.search);
+    const submitted = params.get('submitted') === '1';
+    const note = document.getElementById('thanks-note');
+    const title = document.querySelector('.thanks-page h1');
+    const supporting = document.querySelector('.thanks-page .supporting');
+
+    if (!submitted) {
+      if (title) title.textContent = 'You’re in the right place';
+      if (supporting) supporting.textContent = 'Please use the contact form to send a message.';
+      if (note) {
+        note.style.display = 'block';
+        note.textContent = 'Redirecting you to the contact section…';
+      }
+      window.setTimeout(() => {
+        safeRedirect('/#contact');
+      }, 2200);
+      return;
+    }
+
+    try {
+      sessionStorage.removeItem('nw_contact_draft_v1');
+    } catch (e) {
+      // ignore
+    }
+
+    if (note) {
+      note.style.display = 'block';
+      note.textContent = 'Redirecting you back in a few seconds…';
+    }
+    window.setTimeout(() => {
+      safeRedirect('/');
+    }, 8000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+}
+
 showContactErrorFromUrl();
 refreshMathChallenge();
 
@@ -418,7 +490,10 @@ function centerRecaptchaMobile() {
 
 document.addEventListener('DOMContentLoaded', () => {
   setupSiteNav();
+  setupDemoNav();
   setupHeroRotator();
+  setupThanksPage();
 });
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
