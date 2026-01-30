@@ -274,19 +274,24 @@ body {
 }
 
 .site-nav-links a {
-  color: rgba(11,18,32,0.80);
+  color: rgba(11,18,32,0.82);
   text-decoration: none;
-  font-weight: 650;
-  padding: 0.38rem 0.55rem;
-  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding: 0.42rem 0.6rem;
+  border-radius: 14px;
   background: transparent;
   border: 1px solid transparent;
+  position: relative;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .site-nav-links a:hover,
 .site-nav-links a:focus-visible {
-  background: rgba(255,255,255,0.70);
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.10), rgba(var(--accent2-rgb),0.08));
   border-color: rgba(15,23,42,0.12);
+  box-shadow: 0 14px 38px rgba(2,8,23,0.10);
+  transform: translateY(-1px);
   outline: none;
 }
 
@@ -498,6 +503,17 @@ body {
 
   .about-page header.hero h1,
   .about-page header.hero .supporting {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .terms-page header.hero {
+    text-align: center;
+  }
+
+  .terms-page header.hero h1,
+  .terms-page header.hero .supporting {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -1164,6 +1180,35 @@ section:not(.contact) > .container > .section-intro {
   padding: 2.25rem 2.25rem;
 }
 
+.terms-page main {
+  padding: 1.25rem 0 4.5rem;
+}
+
+.terms-page main section {
+  padding: 2.25rem 0;
+}
+
+.terms-page main section + section::before {
+  display: none;
+}
+
+.terms-page main section .container {
+  max-width: 980px;
+  background: white;
+  border: 1px solid rgba(15,47,68,0.06);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sm);
+  padding: 2.25rem 2.25rem;
+  text-align: center;
+}
+
+.terms-page .pricing-features {
+  display: inline-block;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 600px) {
   .about-page main {
     padding: 0.75rem 0 4rem;
@@ -1174,6 +1219,19 @@ section:not(.contact) > .container > .section-intro {
   }
 
   .about-page main section .container {
+    padding: 1.6rem 1.3rem;
+    border-radius: 18px;
+  }
+
+  .terms-page main {
+    padding: 0.75rem 0 4rem;
+  }
+
+  .terms-page main section {
+    padding: 1.5rem 0;
+  }
+
+  .terms-page main section .container {
     padding: 1.6rem 1.3rem;
     border-radius: 18px;
   }
